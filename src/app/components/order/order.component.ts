@@ -19,8 +19,8 @@ export class OrderComponent implements OnInit {
   }
 
   
-  getCart() {
-    
+  getCart(): IProduct[] {
+    return this.cart;
   }
 
   removeFromCart(product: IProduct) {
@@ -43,8 +43,8 @@ export class OrderComponent implements OnInit {
   }
 
 
-  emptyCart() {
-
+  emptyCart(): boolean {
+    return false;
   }
 
 
