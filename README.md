@@ -1,27 +1,2 @@
-# Nautes
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# E-Commerce_TDD
+Sviluppo Web Application E-commerce responsive con approccio TDD. Proof of Concept di una web application front-end per un sito e-commerce che permetta la navigazione di varie categorie di prodotti e la simulazione di un flusso completo di carrello/acquisto. Prevedere delle fake API per i dati relativi alle anagrafiche prodotto e operazioni carrello e cassa. L’applicazione, sviluppata attraverso il framework Angular, dovrà essere completamente responsive, implementato seguendo l’approccio Mobile First. Scritti i casi di test relativi ai vari componenti che andranno a comporre la web application seguendo l’approccio TDD (Test Driven Development).
