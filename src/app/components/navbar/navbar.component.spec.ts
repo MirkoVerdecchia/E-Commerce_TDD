@@ -19,7 +19,25 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
   });
 
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('should show home button link', () => {
+    expect(fixture.nativeElement.querySelector('[data-test="home"]')).toBeTruthy();
+  });
+
+
+  it('should show product-list button link', () => {
+    expect(fixture.nativeElement.querySelector('[data-test="product-list"]')).toBeTruthy();
+  });
+
+
+  it('should show order button link', () => {
+    expect(fixture.nativeElement.querySelector('[data-test="order"]')).toBeTruthy();
+  });
+
+
 });
