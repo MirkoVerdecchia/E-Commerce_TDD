@@ -10,12 +10,18 @@ import { CartService } from 'src/app/service/cart.service';
 })
 export class OrderComponent implements OnInit {
 
-  private cart: IProduct[] = [];
+  private cart: IProduct[] = [{
+    "ID": "10",
+    "name": "test",
+    "price": 10,
+    "quantity": 10,
+  }]
 
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+
   }
 
   
