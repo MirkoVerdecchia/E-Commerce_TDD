@@ -22,4 +22,17 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show logo', () => {
+
+    expect(fixture.nativeElement.querySelector('[data-test="logo"]')).toBeTruthy();
+
+  });
+
+  it('should show Name', () => {
+
+    expect(fixture.nativeElement.querySelector('[data-test="name"]')).toBeTruthy();
+
+  });
+
 });
