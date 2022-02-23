@@ -10,12 +10,7 @@ import { CartService } from 'src/app/service/cart.service';
 })
 export class OrderComponent implements OnInit {
 
-  private cart: IProduct[] = [{
-    "ID": "10",
-    "name": "test",
-    "price": 10,
-    "quantity": 10,
-  }]
+  private cart: IProduct[] = []
 
 
   constructor(private cartService: CartService) { }
