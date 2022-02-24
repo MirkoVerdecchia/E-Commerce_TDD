@@ -1,15 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { spyOnClass } from 'jasmine-es6-spies';
+import { Observable, of } from 'rxjs';
+import { IProduct } from 'src/app/interface/product';
+import { DataService } from 'src/app/service/data.service';
 import { ProductListComponent } from './product-list.component';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
-  let demoCart: any;
+  let dataService: jasmine.SpyObj<DataService>;
+  //let demoCart: any;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductListComponent ]
+      declarations: [ ProductListComponent ],
+      providers: [
+        { provide: DataService, useFactory: () => spyOnClass(DataService) }  //use this to provide a mocked version of the dataService instead of the real versione, this will allow me to mock his methods
+      ]
     })
     .compileComponents();
   });
@@ -17,32 +24,70 @@ describe('ProductListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductListComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-
-    demoCart = jasmine.createSpyObj('demoCart',
-    [
-      {
-      "id": 1,
-      "name": "test1",
-      "price": 100,
-      "quantity": 1,
-      },
-      {
-      "id": 2,
-      "name": "test2",
-      "price": 200,
-      "quantity": 2,
-      }
-    ]);
   });
 
+
+  beforeEach(() => {
+    dataService = TestBed.get(DataService);
+
+    dataService.getProduct$.and.returnValue(of([
+        {
+          "id": 1,
+          "name": "Sugar",
+          "price": "€4,05",
+          "quantity": 16
+        },
+        {
+          "id": 2,
+          "name": "Bread",
+          "price": "€1,13",
+          "quantity": 60
+        },
+        {
+          "id": 3,
+          "name": "Rice",
+          "price": "€9,58",
+          "quantity": 10
+        }
+      ]));
+
+    fixture.detectChanges();
+  });
+
+
+  
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
+  
 
+  it('should show products', () => {
+  
+    expect(fixture.nativeElement.querySelectorAll('[data-test="product"]').length).toBe(3);
+    
+  });
+  
+
+
+  it('should show product details ', () => {
+    fixture.detectChanges();
+
+    const product = fixture.nativeElement.querySelector('[data-test="product"]');
+    expect(product.querySelector('[data-test="name"]').innerText).toEqual('Sugar');
+    expect(product.querySelector('[data-test="price"]').innerText).toEqual('€4,05');
+    expect(product.querySelector('[data-test="quantity"]').innerText).toEqual('16');
+
+
+  });
+
+
+
+
+  
+/*
   it('should show list title "listino"', () => {
-    expect(fixture.nativeElement.querySelector('[data-test="product-list"]')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('[data-test="product_list"]')).toBeTruthy();
   });
 
 
@@ -51,15 +96,12 @@ describe('ProductListComponent', () => {
   });
 
 
-  it('should show the thead ', () => {
-    expect(fixture.nativeElement.querySelector('[data-test="productDetails"]')).toBeTruthy();
-  });
-
-/*
-  it('should show product details ', () => {
-    const product = fixture.nativeElement.querySelector('[data-test="product"]');
-    expect(product.querySelector('[data.test="title"]').innerText).toEqual('test1')
+  it('should show the intestatio of the product details ', () => {
+    expect(fixture.nativeElement.querySelector('[data-test="thead"]')).toBeTruthy();
   });
 */
+
+
+
   
 });
