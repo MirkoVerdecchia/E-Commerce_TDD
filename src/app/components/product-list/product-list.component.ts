@@ -11,17 +11,17 @@ import { DataService } from 'src/app/service/data.service';
 export class ProductListComponent implements OnInit {
 
   //public products: IProduct[] = [];
-  products$;
+  products: IProduct[] = [];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
 
-    this.products$ = this.dataService.getProduct$();   
+    this.products = this.dataService.getProduct();   
     
   }
 
-  addProductToCart() {
+  addProductToCart(product: IProduct) {
 
   }
 

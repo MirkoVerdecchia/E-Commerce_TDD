@@ -1,9 +1,9 @@
 <div>
-	<div data-test="product" *ngFor="let product of products$ | async">
+	<div data-test="product" *ngFor="let product of products">
 		<div data-test="name">{{product.name}}</div>
 		<div data-test="price">{{product.price}}</div>
 		<div data-test="quantity">{{product.quantity}}</div>
-
+		<div data-test="addButton" ><button (click)="addProductToCart(product)" >Aggiungi</button></div>
 	</div>
 
 </div>
