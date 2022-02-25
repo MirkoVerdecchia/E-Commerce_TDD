@@ -1,99 +1,116 @@
-import { CastExpr } from '@angular/compiler';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CartService } from 'src/app/service/cart.service';
-
+import { spyOnClass } from 'jasmine-es6-spies';
 import { OrderComponent } from './order.component';
+import { IProduct } from 'src/app/interface/product';
+import { DataService } from 'src/app/service/data.service';
+import { of } from 'rxjs';
 
 describe('OrderComponent', () => {
   let component: OrderComponent;
   let fixture: ComponentFixture<OrderComponent>;
-  //let cartService: CartService;
-  //let td: HTMLElement; // help me to get the value of the text content present in the 'td' element  
-  //let demoCart: any;
+  let cartService: jasmine.SpyObj<CartService>;
+
+  const mockProduct1: IProduct[] = [
+    {
+      "id": "1",
+      "name": "test",
+      "price": "€1,00" ,
+      "quantity": 1
+    }];
+
+
+  const p: IProduct[] = [
+    {
+      "id": "1",
+      "name": "Pane",
+      "price": "€1,50" ,
+      "quantity": 10
+    },
+    {
+      "id": "2",
+      "name": "Farina",
+      "price": "€2.50",
+      "quantity": 20
+    },
+    {
+      "id": "3",
+      "name": "Spaghetti",
+      "price": "€3,50",
+      "quantity": 30
+    }
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ OrderComponent ],
-      providers: [/*CartService*/]
+      providers: [CartService, {provide: CartService, useFactory: () => spyOnClass(CartService)}]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(OrderComponent);
-    //cartService = TestBed.get(CartService);
     component = fixture.componentInstance;
-    //fixture.detectChanges();
-    //td = fixture.nativeElement.querySelector('td');
-
     
-
-    // code for jasmine.createSpyObj
-
-    /*demoCart = jasmine.createSpyObj('demoCart',
-    [
-      {
-      "id": 1,
-      "name": "test1",
-      "price": 100,
-      "quantity": 1,
-      },
-      {
-      "id": 2,
-      "name": "test2",
-      "price": 200,
-      "quantity": 2,
-      }
-    ]);
-    //demoCart.removeFromCart();
-    demoCart.getTotal();
-    */
   });
+
+  beforeEach(() => {
+    cartService = TestBed.get(CartService);
+    cartService.getSingle.and.returnValue(p);
+
+    fixture.detectChanges(); //Detect the changes on the DOM in runtime
+
+  })
   
 
   it('should create', () => {
+    
     expect(component).toBeTruthy();
-  });
-
-  /*it('[spyOn] should chek getCart is called in order.component.html', () => {
-    let mockSpy = spyOn(cartService,'getTotal')
-    component.ngOnInit();
-    expect(mockSpy).toHaveBeenCalled();
-  });
-  */
-
-  /*it('should assert value for "td" element to be value of componenet.product ',() => {
-    const productMock = {
-      "name": "test",
-      "price": 100,
-      "quantity": 1
-    }
-    let cartSpy = spyOn(cartService, 'getSingle');
-    fixture.detectChanges();
-    expect(td.textContent).toEqual('test');
-
- 
-  });
-  */
-
-
-  it('should show list title "carrello"', () => {
-    expect(fixture.nativeElement.querySelector('[data-test="carrello"]')).toBeTruthy();
+  
   });
 
 
-  it('should show list box area', () => {
-    expect(fixture.nativeElement.querySelector('[data-test="listBox"]')).toBeTruthy();
+  it('name field shoul not be empty',() => {
+
   });
-
-
+  
   it('should show button for buy product', () => {
+
     expect(fixture.nativeElement.querySelector('[data-test="buttonBuy"]')).toBeTruthy();
+  
   });
 
 
-  it('should show button for buy product', () => {
-    expect(fixture.nativeElement.querySelector('[data-test="buttonBuy"]')).toBeTruthy();
+  it('should show product inside cart', () => {
+
+    expect(fixture.nativeElement.querySelectorAll('[data-test="cart"]').length).toBe(3)
+
   });
+
+  it('should show productCart details ', () => {
+
+    const cart = fixture.nativeElement.querySelector('[data-test="cart"]');
+
+    expect(cart.querySelector('[data-test="name"]').innerText).toEqual('Pane');
+    expect(cart.querySelector('[data-test="price"]').innerText).toEqual('€1,50');
+    expect(cart.querySelector('[data-test="quantity"]').innerText).toBeTruthy(); // Così per vedere solo se c'è e non controllarne il risultato visto, pensare a come fare!
+
+  });
+
+
+  it('should the method refresh the cart, putting a product inside it', () => {
+
+  
+
+    const cart = fixture.nativeElement.querySelector('[data-test="cart"]');
+
+    expect(cart.querySelector('[data-test="name"]').innerText).toEqual('test');
+    expect(cart.querySelector('[data-test="price"]').innerText).toEqual('€1,0');
+    expect(cart.querySelector('[data-test="quantity"]').innerText).toEqual('1'); 
+  });
+
+
+  
 
 });
