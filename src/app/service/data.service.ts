@@ -8,14 +8,16 @@ import { IProduct } from '../interface/product';
 
 export class DataService {
 
+  private product : IProduct[] = []
+
   constructor() { }
 
 
   
-  getProduct$(): any {
+  getProduct(): IProduct[] {
 
     //@todo add a real http call to get products.
-    return of([]);
+    return this.product;
 
   }
   
