@@ -18,7 +18,7 @@ cartProducts : IProduct[] = [];
 
   ngOnInit(): void {
 
-  this.cartProducts = this.cartService.getSingle();
+  this.cartProducts = this.cartService.getCart();
   
   }
 
