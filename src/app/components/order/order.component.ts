@@ -54,6 +54,8 @@ cartProducts : IProduct[] = [];
 
   getTotal() {
 
+    return this.cartService.getTotal();
+
   }
 
 

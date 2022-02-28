@@ -15,7 +15,7 @@
 <input data-test="address" type="text" placeholder="Indirizzo" #address>
 <button data-test="buttonBuy">acquista</button>
 <!--button class="button button2" (click) = "order(phone.value, city.value, address.value)">Acquista</button-->
-<p>IL TOTALE E' {{getTotal()}}€</p>
+<p data-test="total">IL TOTALE E' {{getTotal()}} €</p>
 </div>
 <div class="left-area" *ngIf = "emptyCart()">
 	<P>IL CARRELLO E' VUOTO</P>

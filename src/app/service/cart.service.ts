@@ -9,19 +9,26 @@ import { IProduct } from "../interface/product";
 export class CartService{
 
     private content = new Subject<IProduct>();
+    public share = this.content.asObservable();
     private total: number = 0;
-    private single: IProduct[] = [];
-    private duplicate : IProduct[] = [];
     private cart: IProduct[] = [];
+    private duplicate : IProduct[] = [];
 
-    cosntructor() {
+    constructor() {
 
+        this.share.subscribe(product => {
+            if (!this.cart.find(p => p.id === product.id)) {
+              this.cart.push(product);
+            }
+            this.total += product.price;
+
+          });
+      
     }
 
 
     updateCart(p: IProduct) {
-        
-        return this.single;
+        this.content.next(p);
     }
 
 
@@ -32,15 +39,17 @@ export class CartService{
     }
 
 
-    getTotal(){
+    getTotal(){ 
+
+        return this.total.toFixed(2);
 
     }
 
 
-    getSingle() : IProduct[]{
+    getCart() : IProduct[]{
         
         // @TODO add a real HTTP call to get product from cart
-        return this.single;
+        return this.cart;
     }
 
 
