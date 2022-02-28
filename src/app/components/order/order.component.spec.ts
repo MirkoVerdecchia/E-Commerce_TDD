@@ -15,7 +15,7 @@ describe('OrderComponent', () => {
 
   const mockProduct1: IProduct = 
     {
-      "id": "1",
+      "id": "4",
       "name": "test",
       "price": 1.00,
       "quantity": 1
@@ -42,6 +42,8 @@ describe('OrderComponent', () => {
       "quantity": 30
     }
   ];
+  
+  const totOfP = (p[0].price + p[1].price + p[2].price).toFixed(2);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -60,7 +62,7 @@ describe('OrderComponent', () => {
   beforeEach(() => {
     cartService = TestBed.get(CartService);
     cartService.getCart.and.returnValue(p);
-    cartService.getTotal.and.returnValue(7.50);
+    cartService.getTotal.and.returnValue(totOfP);
 
     fixture.detectChanges(); //Detect the changes on the DOM in runtime
 
@@ -89,17 +91,9 @@ describe('OrderComponent', () => {
 
   });
 
-  it('should show total price ', () => { 
+  it('should show total price details ', () => {     
 
-    expect(fixture.nativeElement.querySelector('[data-test="total"]')).toBeTruthy();
-
-  });
-
-  it('should show total price details ', () => { 
-
-    const cart = fixture.nativeElement.querySelectorAll('[data-test="cart"]');
-
-    expect(fixture.nativeElement.querySelector('[data-test="total"]').innerText).toEqual("IL TOTALE E'" + ' 7.50 €');
+    expect(fixture.nativeElement.querySelector('[data-test="total"]').innerText).toContain(' 7.50 €');
 
   });
 
@@ -122,18 +116,22 @@ describe('OrderComponent', () => {
   }
 
   });
-/*
+
   it('should refresh the cart', () => {
 
-    const c = (cartService.getCart).length;
-
+    let c = (cartService.getCart()).length;
+    console.log(c);
     cartService.updateCart(mockProduct1);
+
+    c = (cartService.getCart()).length;
+    console.log(c);
 
 
     expect((c)).toBe(c + 1);
   
+  
   });
-*/
+
 
 
 
