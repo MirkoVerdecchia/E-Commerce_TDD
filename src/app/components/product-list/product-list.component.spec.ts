@@ -110,7 +110,7 @@ it('should show product details ', () => {
 });
 
 //TODO
-it('should updateCart have been called in addProductToCart Click',  async() => {
+it('should addProductToCart have been called in button Click',  async() => {
   spyOn(component, 'addProductToCart')
 
   let button = fixture.debugElement.nativeElement.querySelector('button');
