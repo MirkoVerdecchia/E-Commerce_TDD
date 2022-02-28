@@ -1,6 +1,8 @@
+import { jsDocComment } from '@angular/compiler';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppPage } from 'e2e/src/app.po';
 import { spyOnClass } from 'jasmine-es6-spies';
+import { ExpectedConditions } from 'protractor';
 import { Observable, of } from 'rxjs';
 import { IProduct } from 'src/app/interface/product';
 import { CartService } from 'src/app/service/cart.service';
@@ -12,6 +14,16 @@ describe('ProductListComponent', () => {
   let fixture: ComponentFixture<ProductListComponent>;
   let dataService: jasmine.SpyObj<DataService>;
   let cartService: jasmine.SpyObj<CartService>;
+
+
+
+  const mockProduct1: IProduct = 
+    {
+      "id": "4",
+      "name": "test",
+      "price": 1.00,
+      "quantity": 1
+    };
 
 
   const mockProduct: IProduct[] = [
@@ -97,7 +109,17 @@ it('should show product details ', () => {
 
 });
 
+//TODO
+it('should updateCart have been called in addProductToCart Click',  async() => {
+  spyOn(component, 'addProductToCart')
 
+  let button = fixture.debugElement.nativeElement.querySelector('button');
+  button.click();
+
+  fixture.whenStable().then(() => {
+    expect(component.addProductToCart).toHaveBeenCalled();
+  });
+});
 
 
 
