@@ -27,22 +27,24 @@ cartProducts : IProduct[] = [];
     
   }
 
-  removeFromCart(product: IProduct) {
+  removeFromCart() {
 
   }
 
 
-  makeOrder(phone: string, city: string, address: string) {
+  makeOrder() {
 
   }
 
 
-  sendOrder(order: IOrder) {
+  sendOrder() {
 
   }
 
 
-  checkAddressData(phone: string, city: string, via: string) {
+  checkAddressData(phone: string, city: string, address: string): boolean {
+
+    return true;
 
   }
 

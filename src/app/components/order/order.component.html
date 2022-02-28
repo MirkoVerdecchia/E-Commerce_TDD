@@ -13,7 +13,7 @@
 <input data-test="phone" type="text" placeholder="Telefono" size="10" #phone>
 <input data-test="city" type="text" placeholder="Città" #city>
 <input data-test="address" type="text" placeholder="Indirizzo" #address>
-<button data-test="buttonBuy" >Acquista</button>
+<button data-test="buttonBuy" (click) = "makeOrder()">Acquista</button>
 <p data-test="total">IL TOTALE E' {{getTotal()}} €</p>
 </div>
 <div class="left-area" *ngIf = "emptyCart()">
