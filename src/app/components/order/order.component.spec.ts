@@ -12,13 +12,13 @@ describe('OrderComponent', () => {
   let fixture: ComponentFixture<OrderComponent>;
   let cartService: jasmine.SpyObj<CartService>;
 
-  const mockProduct1: IProduct[] = [
+  const mockProduct1: IProduct = 
     {
       "id": "1",
       "name": "test",
       "price": "€1,00" ,
       "quantity": 1
-    }];
+    };
 
 
   const p: IProduct[] = [
@@ -58,7 +58,7 @@ describe('OrderComponent', () => {
 
   beforeEach(() => {
     cartService = TestBed.get(CartService);
-    cartService.getSingle.and.returnValue(p);
+    cartService.getCart.and.returnValue(p);
 
     fixture.detectChanges(); //Detect the changes on the DOM in runtime
 
@@ -82,6 +82,14 @@ describe('OrderComponent', () => {
   
   });
 
+  it('should show the order input field', () => {
+
+    expect(fixture.nativeElement.querySelector('[data-test="phone"]')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('[data-test="city"]')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('[data-test="address"]')).toBeTruthy();
+
+  
+  });
 
   it('should show product inside cart', () => {
 
@@ -99,16 +107,18 @@ describe('OrderComponent', () => {
 
   });
 
-
   it('should the method refresh the cart', () => {
+
+    const c = (cartService.getCart).length;
 
     cartService.updateCart(mockProduct1);
 
-    const c = (cartService.getSingle).length;
 
     expect((c)).toBe(c + 1);
   
   });
+
+
 
 
   
