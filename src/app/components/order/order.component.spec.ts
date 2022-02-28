@@ -63,7 +63,6 @@ describe('OrderComponent', () => {
     cartService = TestBed.get(CartService);
     cartService.getCart.and.returnValue(p);
     cartService.getTotal.and.returnValue(totOfP);
-
     fixture.detectChanges(); //Detect the changes on the DOM in runtime
 
   })
@@ -117,23 +116,38 @@ describe('OrderComponent', () => {
 
   });
 
+
+//TODO
   it('should refresh the cart', () => {
 
     let c = (cartService.getCart()).length;
-    console.log(c);
+
     cartService.updateCart(mockProduct1);
 
     c = (cartService.getCart()).length;
-    console.log(c);
-
 
     expect((c)).toBe(c + 1);
   
   
   });
 
+//TODO
+  it('should clean the cart', () => {   
 
+    console.log(cartService.getCart());
+    cartService.cleanCart();
+    expect(cartService.getCart()).toEqual([]);
+    console.log(cartService.getCart());
 
+  });
+
+  it('should the cart be empty', () => {   
+
+    cartService.getCart.and.returnValue([]);
+    expect(cartService.emptyCart()).toBeTrue();
+
+  
+  });
 
 
   
