@@ -5,6 +5,7 @@ import { OrderComponent } from './order.component';
 import { IProduct } from 'src/app/interface/product';
 import { DataService } from 'src/app/service/data.service';
 import { of } from 'rxjs';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 describe('OrderComponent', () => {
   let component: OrderComponent;
@@ -99,18 +100,19 @@ describe('OrderComponent', () => {
   });
 
 
-  it('should the method refresh the cart, putting a product inside it', () => {
+  it('should the method refresh the cart', () => {
 
+    cartService.updateCart(mockProduct1);
+
+    const c = (cartService.getSingle).length;
+
+    expect((c)).toBe(c + 1);
   
-
-    const cart = fixture.nativeElement.querySelector('[data-test="cart"]');
-
-    expect(cart.querySelector('[data-test="name"]').innerText).toEqual('test');
-    expect(cart.querySelector('[data-test="price"]').innerText).toEqual('€1,0');
-    expect(cart.querySelector('[data-test="quantity"]').innerText).toEqual('1'); 
   });
 
 
   
+
+
 
 });
