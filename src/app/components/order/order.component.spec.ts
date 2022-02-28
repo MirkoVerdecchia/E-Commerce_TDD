@@ -16,7 +16,7 @@ describe('OrderComponent', () => {
     {
       "id": "1",
       "name": "test",
-      "price": "€1,00" ,
+      "price": 1.00,
       "quantity": 1
     };
 
@@ -25,19 +25,19 @@ describe('OrderComponent', () => {
     {
       "id": "1",
       "name": "Pane",
-      "price": "€1,50" ,
+      "price": 1.50,
       "quantity": 10
     },
     {
       "id": "2",
       "name": "Farina",
-      "price": "€2.50",
+      "price": 2.50,
       "quantity": 20
     },
     {
       "id": "3",
       "name": "Spaghetti",
-      "price": "€3,50",
+      "price": 3.50,
       "quantity": 30
     }
   ];
@@ -71,11 +71,8 @@ describe('OrderComponent', () => {
   
   });
 
-
-  it('name field shoul not be empty',() => {
-
-  });
   
+
   it('should show button for buy product', () => {
 
     expect(fixture.nativeElement.querySelector('[data-test="buttonBuy"]')).toBeTruthy();
@@ -88,7 +85,6 @@ describe('OrderComponent', () => {
     expect(fixture.nativeElement.querySelector('[data-test="city"]')).toBeTruthy();
     expect(fixture.nativeElement.querySelector('[data-test="address"]')).toBeTruthy();
 
-  
   });
 
   it('should show product inside cart', () => {
@@ -99,14 +95,18 @@ describe('OrderComponent', () => {
 
   it('should show productCart details ', () => {
 
-    const cart = fixture.nativeElement.querySelector('[data-test="cart"]');
+    const cart = fixture.nativeElement.querySelectorAll('[data-test="cart"]');
 
-    expect(cart.querySelector('[data-test="name"]').innerText).toEqual('Pane');
-    expect(cart.querySelector('[data-test="price"]').innerText).toEqual('€1,50');
-    expect(cart.querySelector('[data-test="quantity"]').innerText).toBeTruthy(); // Così per vedere solo se c'è e non controllarne il risultato visto, pensare a come fare!
+    for( var i = 0; i < cart.length; i++) {
+
+    expect(cart[i].querySelector('[data-test="name"]').innerText).toEqual(p[i].name);
+    expect(cart[i].querySelector('[data-test="price"]').innerText).toEqual(p[i].price.toString() + ' €');
+    expect(cart[i].querySelector('[data-test="quantity"]').innerText).toEqual(p[i].quantity.toString()); // Così per vedere solo se c'è e non controllarne il risultato visto, pensare a come fare!
+    
+  }
 
   });
-
+/*
   it('should the method refresh the cart', () => {
 
     const c = (cartService.getCart).length;
@@ -116,6 +116,12 @@ describe('OrderComponent', () => {
 
     expect((c)).toBe(c + 1);
   
+  });
+*/
+  it('should show the total of the cart price ', () => { 
+
+
+
   });
 
 

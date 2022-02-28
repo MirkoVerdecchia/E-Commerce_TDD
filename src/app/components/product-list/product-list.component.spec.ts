@@ -18,19 +18,19 @@ describe('ProductListComponent', () => {
     {
       "id": "1",
       "name": "Sugar",
-      "price": "€4,05" ,
+      "price": 4.05,
       "quantity": 16
     },
     {
       "id": "2",
       "name": "Bread",
-      "price": "€1,13",
+      "price": 1.13,
       "quantity": 60
     },
     {
       "id": "3",
       "name": "Rice",
-      "price": "€9,58",
+      "price": 9.58,
       "quantity": 10
     }];
 
@@ -89,7 +89,7 @@ it('should show product details ', () => {
   for( var i = 0; i < products.length; i++) {
 
     expect(products[i].querySelector('[data-test="name"]').innerText).toEqual(mockProduct[i].name);
-    expect(products[i].querySelector('[data-test="price"]').innerText).toEqual(mockProduct[i].price);
+    expect(products[i].querySelector('[data-test="price"]').innerText).toEqual(mockProduct[i].price.toString());
     expect(products[i].querySelector('[data-test="quantity"]').innerText).toEqual(mockProduct[i].quantity.toString());
     
   }
