@@ -6,6 +6,7 @@ import { IProduct } from 'src/app/interface/product';
 import { DataService } from 'src/app/service/data.service';
 import { of } from 'rxjs';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { ppid } from 'process';
 
 describe('OrderComponent', () => {
   let component: OrderComponent;
@@ -59,6 +60,7 @@ describe('OrderComponent', () => {
   beforeEach(() => {
     cartService = TestBed.get(CartService);
     cartService.getCart.and.returnValue(p);
+    cartService.getTotal.and.returnValue(7.50);
 
     fixture.detectChanges(); //Detect the changes on the DOM in runtime
 
@@ -87,9 +89,23 @@ describe('OrderComponent', () => {
 
   });
 
+  it('should show total price ', () => { 
+
+    expect(fixture.nativeElement.querySelector('[data-test="total"]')).toBeTruthy();
+
+  });
+
+  it('should show total price details ', () => { 
+
+    const cart = fixture.nativeElement.querySelectorAll('[data-test="cart"]');
+
+    expect(fixture.nativeElement.querySelector('[data-test="total"]').innerText).toEqual("IL TOTALE E'" + ' 7.50 €');
+
+  });
+
   it('should show product inside cart', () => {
 
-    expect(fixture.nativeElement.querySelectorAll('[data-test="cart"]').length).toBe(3)
+    expect(fixture.nativeElement.querySelectorAll('[data-test="cart"]').length).toBe(3);
 
   });
 
@@ -101,13 +117,13 @@ describe('OrderComponent', () => {
 
     expect(cart[i].querySelector('[data-test="name"]').innerText).toEqual(p[i].name);
     expect(cart[i].querySelector('[data-test="price"]').innerText).toEqual(p[i].price.toString() + ' €');
-    expect(cart[i].querySelector('[data-test="quantity"]').innerText).toEqual(p[i].quantity.toString()); // Così per vedere solo se c'è e non controllarne il risultato visto, pensare a come fare!
+    expect(cart[i].querySelector('[data-test="quantity"]').innerText).toEqual(p[i].quantity.toString());
     
   }
 
   });
 /*
-  it('should the method refresh the cart', () => {
+  it('should refresh the cart', () => {
 
     const c = (cartService.getCart).length;
 
@@ -118,11 +134,6 @@ describe('OrderComponent', () => {
   
   });
 */
-  it('should show the total of the cart price ', () => { 
-
-
-
-  });
 
 
 
