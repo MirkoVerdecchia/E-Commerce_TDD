@@ -3,7 +3,7 @@
 		<div data-test= "name">{{product.name}}</div>
 		<div data-test= "price">{{product.price}}</div>
 		<div data-test= "quantity">{{product.quantity}}</div>
-		<div ><button data-test="addButton"  >Aggiungi</button></div>
+		<div ><button data-test="addButton" (click)="addProductToCart(product)" >Aggiungi</button></div>
 	</div>
 
 </div>
