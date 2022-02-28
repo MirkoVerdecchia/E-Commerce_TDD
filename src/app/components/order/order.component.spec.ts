@@ -132,9 +132,11 @@ describe('OrderComponent', () => {
   });
 
 //TODO
-  it('should clean the cart', () => {   
+  it('should clean the cart', async() => {   
+    
 
     console.log(cartService.getCart());
+    
     cartService.cleanCart();
     expect(cartService.getCart()).toEqual([]);
     console.log(cartService.getCart());
@@ -148,10 +150,23 @@ describe('OrderComponent', () => {
 
     cartService.getCart.and.returnValue(t);
     
-    expect(cartService.emptyCart()).toBeTrue();
+    expect(cartService.emptyCart).toBeTrue();
 
   
   });
+
+  it('should makeOrder have been called in button Click',  async() => {
+    spyOn(component, 'makeOrder')
+
+
+    let button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+  
+    fixture.whenStable().then(() => {
+      expect(component.makeOrder).toHaveBeenCalled();
+    });
+  });
+  
 
 
   

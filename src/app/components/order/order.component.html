@@ -3,7 +3,7 @@
 		<div data-test= "name">{{ product.name }}</div>
 		<div data-test= "price" >{{ product.price }} €</div>
 		<div data-test= "quantity" >{{ product.quantity }}</div>
-   		<div><button mat-raised-button type="button" class="btn btn-default button1" >Rimuovi</button></div>
+   		<div><!--button mat-raised-button  class="btn btn-default button1" >Rimuovi</button--></div>
 	</div>
 </div>
 
@@ -13,8 +13,7 @@
 <input data-test="phone" type="text" placeholder="Telefono" size="10" #phone>
 <input data-test="city" type="text" placeholder="Città" #city>
 <input data-test="address" type="text" placeholder="Indirizzo" #address>
-<button data-test="buttonBuy">acquista</button>
-<!--button class="button button2" (click) = "order(phone.value, city.value, address.value)">Acquista</button-->
+<button data-test="buttonBuy" >Acquista</button>
 <p data-test="total">IL TOTALE E' {{getTotal()}} €</p>
 </div>
 <div class="left-area" *ngIf = "emptyCart()">
