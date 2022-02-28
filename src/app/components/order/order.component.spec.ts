@@ -141,9 +141,13 @@ describe('OrderComponent', () => {
 
   });
 
-  it('should the cart be empty', () => {   
+  //TODO
+  it('should the cart be empty', () => {  
 
-    cartService.getCart.and.returnValue([]);
+    const t = fixture.nativeElement.querySelectorAll('[data-test="cart"]').length;
+
+    cartService.getCart.and.returnValue(t);
+    
     expect(cartService.emptyCart()).toBeTrue();
 
   
