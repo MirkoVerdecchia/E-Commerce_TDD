@@ -6,16 +6,18 @@ import { CartService } from './cart.service';
 describe('CartService', () => {
   let service: CartService;
 
+  const p = {
+    "id": "5",
+    "name": "pippo",
+    "price": 2.00,
+    "quantity": 2
+  };
+
+
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CartService);
 
-    service.cart = [{
-      "id": "4",
-      "name": "test",
-      "price": 1.00,
-      "quantity": 1
-    }];
 
   });
 
@@ -28,22 +30,28 @@ describe('CartService', () => {
   it('should add product to the cart', () => {
     let c = (service.getCart()).length;
 
-    service.updateCart({
-      "id": "5",
-      "name": "pippo",
-      "price": 2.00,
-      "quantity": 2
-    });
+    service.updateCart(p);
     
     expect(service.getCart().length).toBeGreaterThan(c);
   });
 
   
   it('should remove product from the cart', () => {
+
+    service.updateCart(p);
+
+    expect(service.getCart()).toContain(p);
+
+    service.removeProduct(p);
+
+    expect(service.getCart()).not.toContain(p);
+
   });
 
 
   it('should clean the cart', () => {
+
+    service.updateCart(p);
 
     let a = (service.getCart()).length;
 
