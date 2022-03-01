@@ -52,15 +52,28 @@ describe('CartService', () => {
   it('should clean the cart', () => {
 
     service.updateCart(p);
-
-    let a = (service.getCart()).length;
-
     service.cleanCart();
 
     let b = (service.getCart()).length;
-    expect((b)).toBe(a - 1);
+    expect((b)).toBe(0);
 
   });
+  
+
+  it('should the cart be empty', () => {
+    expect(service.emptyCart()).toBeTrue();
+  });
+
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
 
 
 });
