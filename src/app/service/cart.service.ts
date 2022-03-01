@@ -28,6 +28,7 @@ export class CartService{
     }
 
 
+    //TESTED
     updateCart(p: IProduct): void {
 
         this.content.next(p);
@@ -35,6 +36,7 @@ export class CartService{
     }
 
 
+    //TESTED
     removeProduct(p: IProduct): void{
         
         const pos: number = this.cart.indexOf(p);
@@ -49,6 +51,7 @@ export class CartService{
     }
 
 
+    //TESTED DOM
     getTotal(){ 
 
         return this.total.toFixed(2);
@@ -56,6 +59,7 @@ export class CartService{
     }
 
 
+    //TESTED DOM
     getCart() : IProduct[]{
 
         // @TODO add a real HTTP call to get product from cart
@@ -82,6 +86,7 @@ export class CartService{
     }
 
 
+    //TESTED
     cleanCart(): void{
         this.cart = [];
     }
