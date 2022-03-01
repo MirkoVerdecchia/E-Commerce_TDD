@@ -24,6 +24,24 @@ describe('CartService', () => {
     expect(service).toBeTruthy();
   });
 
+  
+  it('should add product to the cart', () => {
+    let c = (service.getCart()).length;
+
+    service.updateCart({
+      "id": "5",
+      "name": "pippo",
+      "price": 2.00,
+      "quantity": 2
+    });
+    
+    expect(service.getCart().length).toBeGreaterThan(c);
+  });
+
+  
+  it('should remove product from the cart', () => {
+  });
+
 
   it('should clean the cart', () => {
 
@@ -35,5 +53,6 @@ describe('CartService', () => {
     expect((b)).toBe(a - 1);
 
   });
+
 
 });
