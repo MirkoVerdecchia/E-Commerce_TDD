@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IProduct } from 'src/app/interface/product';
+import { CartService } from 'src/app/service/cart.service';
 import { DataService } from 'src/app/service/data.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class ProductListComponent implements OnInit {
   //public products: IProduct[] = [];
   products: IProduct[] = [];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private cartService: CartService) { }
 
   ngOnInit(): void {
 
@@ -22,7 +23,8 @@ export class ProductListComponent implements OnInit {
   }
 
   addProductToCart(product: IProduct) {
-    
+    this.cartService.updateCart(product);
+
   }
 
 }

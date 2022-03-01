@@ -109,7 +109,7 @@ it('should show product details ', () => {
 
 });
 
-//TODO
+
 it('should addProductToCart have been called in button Click',  async() => {
   spyOn(component, 'addProductToCart')
 

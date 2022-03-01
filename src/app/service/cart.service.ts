@@ -60,13 +60,13 @@ export class CartService{
 
 
     //TESTED DOM
-    getCart() : IProduct[]{
+    getCart() : IProduct[] {
 
         return this.cart;
     }
 
 
-    getDuplicate() {
+    getDuplicate(): IProduct[] {
 
         return this.duplicate;
 
