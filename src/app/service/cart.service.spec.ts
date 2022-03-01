@@ -25,7 +25,7 @@ describe('CartService', () => {
   });
 
 
-  it('should clean the cart', () => {
+  it('should refresh the cart', () => {
     
 
     let a = (service.getCart()).length;
@@ -33,7 +33,7 @@ describe('CartService', () => {
     service.cleanCart();
 
     let b = (service.getCart()).length;
-    expect((b)).toBe(a - 1);
+    expect((b)).toBe(0);
 
   });
 
