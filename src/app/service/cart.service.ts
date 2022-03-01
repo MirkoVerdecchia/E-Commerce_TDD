@@ -62,7 +62,6 @@ export class CartService{
     //TESTED DOM
     getCart() : IProduct[]{
 
-        // @TODO add a real HTTP call to get product from cart
         return this.cart;
     }
 
@@ -95,6 +94,7 @@ export class CartService{
     //TESTED
     cleanCart(): void{
         this.cart = [];
+        this.duplicate = [];
     }
 
 
