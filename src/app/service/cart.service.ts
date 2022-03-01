@@ -54,7 +54,7 @@ export class CartService{
     //TESTED DOM
     getTotal(): any{ 
 
-        return 0; // this.total.toFixed(2);
+        return this.total.toFixed(2);
 
     }
 
