@@ -82,8 +82,13 @@ describe('CartService', () => {
   });
 
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should return the total of the order cart', () => {
+    service.updateCart(p);
+    service.updateCart(p);
+    service.updateCart(p_1);
+
+    expect(service.getTotal()).toBe((7).toFixed(2));
+
   });
 
 

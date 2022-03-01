@@ -52,9 +52,9 @@ export class CartService{
 
 
     //TESTED DOM
-    getTotal(){ 
+    getTotal(): any{ 
 
-        return this.total.toFixed(2);
+        return 0; // this.total.toFixed(2);
 
     }
 
