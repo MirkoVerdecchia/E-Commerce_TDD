@@ -1,8 +1,7 @@
 import { IProduct } from "./product"
 
 export interface IOrder {
-    ID: string;
-    user: string;
+    id: string;
     phone: string;
     city: string;
     address: string;

@@ -1,5 +1,5 @@
 <div>
-	<div data-test = "cart" *ngFor="let product of cartProducts" >
+	<div data-test = "cart" *ngFor="let product of getCart()" >
 		<div data-test= "name">{{ product.name }}</div>
 		<div data-test= "price" >{{ product.price }} €</div>
 		<div data-test= "quantity" >{{ product.quantity }}</div>

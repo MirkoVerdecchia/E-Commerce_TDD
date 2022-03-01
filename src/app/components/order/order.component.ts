@@ -9,26 +9,30 @@ import { CartService } from 'src/app/service/cart.service';
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
+
 export class OrderComponent implements OnInit {
 
 private cart: IProduct[] = []
-cartProducts : IProduct[] = [];
 
-  constructor(private cartService: CartService) { }
+constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
 
-  this.cartProducts = this.cartService.getCart();
+  this.cart = this.cartService.getCart();
   
   }
 
   
-  getCart() {
-    
+  getCart(): IProduct[] {
+
+    return this.cart;
+
   }
 
-  removeFromCart() {
+  removeFromCart(p: IProduct): void {
 
+    this.cartService.removeProduct(p);
+  
   }
 
 
@@ -42,27 +46,31 @@ cartProducts : IProduct[] = [];
   }
 
 
-  checkAddressData(phone: string, city: string, address: string): boolean {
+  checkAddressData(phone: string, city: string, address: string){
 
-    return true;
+    
 
   }
 
 
   emptyCart(): boolean {
-    return false;
+
+    return this.cartService.emptyCart();
+
   }
 
 
-  getTotal() {
+  getTotal(): any {
 
     return this.cartService.getTotal();
 
   }
 
 
-  //restituisce la quantità di un prodotto nel carrello
-  numberProduct(p : IProduct) {
+  //return number of multiple product with the same id in the cart
+  numberProduct(p : IProduct):number {
+
+    return this.cartService.getNumberProduct(p);
 
   }
 
