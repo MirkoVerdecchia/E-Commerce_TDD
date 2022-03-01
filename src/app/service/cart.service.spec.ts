@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IProduct } from '../interface/product';
 
 import { CartService } from './cart.service';
@@ -9,6 +9,14 @@ describe('CartService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CartService);
+
+    service.cart = [{
+      "id": "4",
+      "name": "test",
+      "price": 1.00,
+      "quantity": 1
+    }];
+
   });
 
 
@@ -17,5 +25,16 @@ describe('CartService', () => {
   });
 
 
+  it('should clean the cart', () => {
+    
+
+    let a = (service.getCart()).length;
+
+    service.cleanCart();
+
+    let b = (service.getCart()).length;
+    expect((b)).toBe(a - 1);
+
+  });
 
 });

@@ -11,7 +11,7 @@ export class CartService{
     private content = new Subject<IProduct>();
     public share = this.content.asObservable();
     private total: number = 0;
-    private cart: IProduct[] = [];
+    public cart: IProduct[] = [];
     private duplicate : IProduct[] = [];
 
     constructor() {
@@ -28,7 +28,8 @@ export class CartService{
 
 
     updateCart(p: IProduct) {
-        this.content.next(p);
+    //this.content.next(p);
+    //this.cart.push(p);
     }
 
 
@@ -47,7 +48,7 @@ export class CartService{
 
 
     getCart() : IProduct[]{
-        
+
         // @TODO add a real HTTP call to get product from cart
         return this.cart;
     }
@@ -58,7 +59,9 @@ export class CartService{
     }
 
 
-    emptyCart() {
+    emptyCart()/*: boolean*/ {
+
+        //return this.cart.length === 0; 
 
     }
 
@@ -68,8 +71,8 @@ export class CartService{
     }
 
 
-    cleanCart(){
-
+    cleanCart(): void{
+        this.cart = [];
     }
 
 

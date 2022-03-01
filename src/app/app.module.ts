@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CartService } from './service/cart.service';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     OrderComponent,
     HomeComponent,
     NavbarComponent,
-    ProductListComponent
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatToolbarModule,
   ],
   
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
