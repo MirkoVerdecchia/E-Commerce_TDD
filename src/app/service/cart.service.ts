@@ -72,7 +72,7 @@ export class CartService{
 
 
     cleanCart(): void{
-        //this.cart = [];
+        this.cart = [];
     }
 
 
