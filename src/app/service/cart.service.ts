@@ -11,8 +11,8 @@ export class CartService{
     private content = new Subject<IProduct>();
     public share = this.content.asObservable();
     private total: number = 0;
-    public cart: IProduct[] = [];
-    private duplicate : IProduct[] = [];
+    public cart: IProduct[] = []; //Cart with single same product
+    private duplicate : IProduct[] = []; //Cart with multiple same product
 
     constructor() {
 
@@ -73,16 +73,22 @@ export class CartService{
 
     }
 
-
+    //TESTED
     emptyCart(): boolean {
 
         return this.cart.length === 0; 
 
     }
 
-
-    getNumberProduct(P: IProduct) {
-
+    //TESTED
+    getNumberProduct(p: IProduct): number {
+        let count: number = 0;
+        for(let b of this.duplicate) {
+            if(b.id == p.id) {
+                count++;
+            }
+        }
+        return count;
     }
 
 
