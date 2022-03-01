@@ -28,8 +28,7 @@ export class CartService{
 
 
     updateCart(p: IProduct) {
-    //this.content.next(p);
-    //this.cart.push(p);
+    this.content.next(p);
     }
 
 
