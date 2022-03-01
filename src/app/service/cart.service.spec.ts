@@ -26,7 +26,6 @@ describe('CartService', () => {
 
 
   it('should clean the cart', () => {
-    
 
     let a = (service.getCart()).length;
 
