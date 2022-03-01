@@ -17,9 +17,10 @@ export class CartService{
     constructor() {
 
         this.share.subscribe(product => {
-            if (!this.cart.find(p => p.id === product.id)) {
+            if (!this.duplicate.find(p => p.id === product.id)) {
               this.cart.push(product);
             }
+            this.duplicate.push(product);
             this.total += product.price;
 
           });
@@ -27,14 +28,23 @@ export class CartService{
     }
 
 
-    updateCart(p: IProduct) {
-    this.content.next(p);
+    updateCart(p: IProduct): void {
+
+        this.content.next(p);
+    
     }
 
 
-    
-
-    removeProduct(p: IProduct){
+    removeProduct(p: IProduct): void{
+        
+        const pos: number = this.cart.indexOf(p);
+        if (pos !== -1) {
+            this.cart.splice(pos,1);
+            this.total -= p.price;
+            if (!this.duplicate.includes(p)) {
+                this.cart.slice(this.cart.indexOf(p), 1);
+            }
+        }
 
     }
 
@@ -54,6 +64,8 @@ export class CartService{
 
 
     getDuplicate() {
+
+        return this.duplicate;
 
     }
 
