@@ -13,6 +13,13 @@ describe('CartService', () => {
     "quantity": 2
   };
 
+  const p_1 = {
+    "id": "6",
+    "name": "pluto",
+    "price": 3.00,
+    "quantity": 3
+  };
+
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -26,22 +33,19 @@ describe('CartService', () => {
     expect(service).toBeTruthy();
   });
 
-  
+
   it('should add product to the cart', () => {
     let c = (service.getCart()).length;
 
     service.updateCart(p);
-    
+
     expect(service.getCart().length).toBeGreaterThan(c);
   });
 
-  
+
   it('should remove product from the cart', () => {
 
     service.updateCart(p);
-
-    expect(service.getCart()).toContain(p);
-
     service.removeProduct(p);
 
     expect(service.getCart()).not.toContain(p);
@@ -58,15 +62,21 @@ describe('CartService', () => {
     expect((b)).toBe(0);
 
   });
-  
+
 
   it('should the cart be empty', () => {
     expect(service.emptyCart()).toBeTrue();
   });
 
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should get the number of product inside the cart', () => {
+    service.updateCart(p);
+    service.updateCart(p);
+    service.updateCart(p_1);
+
+    expect(service.getNumberProduct(p)).toBe(2);
+    expect(service.getNumberProduct(p_1)).toBe(1);
+
   });
 
 
