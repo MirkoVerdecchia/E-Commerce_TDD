@@ -43,7 +43,7 @@ describe('CartService', () => {
   });
 
 
-  it('should remove product from the cart', () => {
+  it('should remove a product from the cart', () => {
 
     service.updateCart(p);
     service.removeProduct(p);
@@ -53,13 +53,15 @@ describe('CartService', () => {
   });
 
 
-  it('should clean the cart', () => {
+  it('should clean the cart and duplicate_cart', () => {
 
     service.updateCart(p);
+    service.updateCart(p);
+    service.updateCart(p_1);
     service.cleanCart();
 
-    let b = (service.getCart()).length;
-    expect((b)).toBe(0);
+    expect(service.getCart()).toEqual([]);
+    expect(service.getDuplicate()).toEqual([]);
 
   });
 
