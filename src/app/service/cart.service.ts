@@ -74,9 +74,9 @@ export class CartService{
     }
 
 
-    emptyCart() {
+    emptyCart(): boolean {
 
-         
+        return this.cart.length === 0; 
 
     }
 
