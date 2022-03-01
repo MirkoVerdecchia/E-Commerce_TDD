@@ -5,6 +5,7 @@ import { CartService } from './cart.service';
 
 describe('CartService', () => {
   let service: CartService;
+  let mockService: jasmine.SpyObj<CartService>;
 
   const p = {
     "id": "5",
@@ -24,6 +25,8 @@ describe('CartService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CartService);
+    mockService = TestBed.get(CartService);
+
 
 
   });
@@ -35,59 +38,60 @@ describe('CartService', () => {
 
 
   it('should add product to the cart', () => {
-    let c = (service.getCart()).length;
+    let c = (mockService.getCart()).length;
 
-    service.updateCart(p);
+    mockService.updateCart(p);
 
-    expect(service.getCart().length).toBeGreaterThan(c);
+    expect(mockService.getCart().length).toBeGreaterThan(c);
   });
 
 
   it('should remove a product from the cart', () => {
 
-    service.updateCart(p);
-    service.removeProduct(p);
+    mockService.updateCart(p);
+    mockService.removeProduct(p);
 
-    expect(service.getCart()).not.toContain(p);
+    expect(mockService.getCart()).not.toContain(p);
 
   });
 
 
   it('should clean the cart and duplicate_cart', () => {
 
-    service.updateCart(p);
-    service.updateCart(p);
-    service.updateCart(p_1);
-    service.cleanCart();
+    mockService.updateCart(p);
+    mockService.updateCart(p);
+    mockService.updateCart(p_1);
+    mockService.cleanCart();
 
-    expect(service.getCart()).toEqual([]);
-    expect(service.getDuplicate()).toEqual([]);
+    expect(mockService.getCart()).toEqual([]);
+    expect(mockService.getDuplicate()).toEqual([]);
 
   });
 
 
   it('should the cart be empty', () => {
-    expect(service.emptyCart()).toBeTrue();
+
+    expect(mockService.emptyCart()).toBeTrue();
   });
 
 
   it('should get the number of product inside the cart', () => {
-    service.updateCart(p);
-    service.updateCart(p);
-    service.updateCart(p_1);
+    mockService.updateCart(p);
+    mockService.updateCart(p);
+    mockService.updateCart(p_1);
 
-    expect(service.getNumberProduct(p)).toBe(2);
-    expect(service.getNumberProduct(p_1)).toBe(1);
+    expect(mockService.getNumberProduct(p)).toBe(2);
+    expect(mockService.getNumberProduct(p_1)).toBe(1);
 
   });
 
 
   it('should return the total of the order cart', () => {
-    service.updateCart(p);
-    service.updateCart(p);
-    service.updateCart(p_1);
+    mockService.updateCart(p);
+    mockService.updateCart(p);
+    mockService.updateCart(p_1);
 
-    expect(service.getTotal()).toBe((7).toFixed(2));
+    expect(mockService.getTotal()).toBe((7).toFixed(2));
 
   });
 

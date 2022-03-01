@@ -11,7 +11,7 @@ export class CartService{
     private content = new Subject<IProduct>();
     public share = this.content.asObservable();
     private total: number = 0;
-    public cart: IProduct[] = []; //Cart with single same product
+    private cart: IProduct[] = []; //Cart with single same product
     private duplicate : IProduct[] = []; //Cart with multiple same product
 
     constructor() {
