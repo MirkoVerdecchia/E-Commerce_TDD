@@ -9,6 +9,7 @@ import { of } from 'rxjs';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { ppid } from 'process';
 import { ExpectedConditions } from 'protractor';
+import { Mock } from 'protractor/built/driverProviders';
 
 describe('OrderComponent', () => {
   let component: OrderComponent;
@@ -129,9 +130,8 @@ describe('OrderComponent', () => {
     
   });
 
-  
+  // capire come passare a1,a2,a3 al metodo mocked
   it('should check the address data', () => {
-    spyOn(component, 'checkAddressData')
 
     var p1 = '0123456789';
     var c1 = 'Roma';
@@ -139,12 +139,9 @@ describe('OrderComponent', () => {
 
     var p2 = '012345678910';
     var c2 = '';
-    var a2 = '';
-
-    component.checkAddressData(p1, c1, a1);
-    expect(component.checkAddressData).toBeTrue();
-    component.checkAddressData(p2, c2, a2);
-    expect(component.checkAddressData).toBeFalse();
+    var a2 = '';    
+    expect(component.checkAddressData(p1, c1, a1)).toBeTrue();
+    expect(component.checkAddressData(p2, c2, a2)).toBeFalse();
 
 
   });
