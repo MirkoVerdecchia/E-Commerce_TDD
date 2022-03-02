@@ -22,13 +22,14 @@ constructor(private cartService: CartService) { }
   
   }
 
-  
+  //TESTED
   getCart(): IProduct[] {
 
     return this.cart;
 
   }
 
+  //TESTED
   removeFromCart(p: IProduct): void {
 
     this.cartService.removeProduct(p);
@@ -51,7 +52,7 @@ constructor(private cartService: CartService) { }
 
   }
 
-
+  //TESTED
   checkAddressData(phone: string, city: string, address: string): boolean{
     if(phone.length !== 10) {
       alert("Inserire un numero di telefono corretto.");
@@ -69,14 +70,14 @@ constructor(private cartService: CartService) { }
     
   }
 
-
+  //TESTED
   emptyCart(): boolean {
 
     return this.cartService.emptyCart();
 
   }
 
-
+  //TESTED
   getTotal(): any {
 
     return this.cartService.getTotal();
@@ -84,7 +85,7 @@ constructor(private cartService: CartService) { }
   }
 
 
-  //return number of multiple product with the same id in the cart
+  //TESTED
   numberProduct(p : IProduct):number {
 
     return this.cartService.getNumberProduct(p);

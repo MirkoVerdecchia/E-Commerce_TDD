@@ -2,7 +2,7 @@
 	<div data-test = "cart" *ngFor="let product of getCart()" >
 		<div data-test= "name">{{ product.name }}</div>
 		<div data-test= "price" >{{ product.price }} €</div>
-		<div data-test= "quantity" >{{ product.quantity }}</div>
+		<div data-test= "quantity" >{{ numberProduct(product)}}</div>
    		<div><!--button mat-raised-button  class="btn btn-default button1" >Rimuovi</button--></div>
 	</div>
 </div>
