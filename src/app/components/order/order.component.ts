@@ -37,7 +37,7 @@ constructor(private cartService: CartService) { }
   }
 
 
-
+  //TESTED
   makeOrder(phone: string, city: string, address: string): void {
     if(this.checkAddressData(phone, city, address)) {
       let date = new Date();

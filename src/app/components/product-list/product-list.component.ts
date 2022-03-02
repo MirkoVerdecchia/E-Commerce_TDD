@@ -11,8 +11,7 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class ProductListComponent implements OnInit {
 
-  //public products: IProduct[] = [];
-  products: IProduct[] = [];
+  public products: IProduct[] = [];
 
   constructor(private dataService: DataService, private cartService: CartService) { }
 
