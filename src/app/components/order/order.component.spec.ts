@@ -3,19 +3,12 @@ import { CartService } from 'src/app/service/cart.service';
 import { spyOnClass } from 'jasmine-es6-spies';
 import { OrderComponent } from './order.component';
 import { IProduct } from 'src/app/interface/product';
-import { IOrder } from 'src/app/interface/order';
-import { DataService } from 'src/app/service/data.service';
-import { of } from 'rxjs';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
-import { ppid } from 'process';
-import { ExpectedConditions } from 'protractor';
-import { Mock } from 'protractor/built/driverProviders';
 
 describe('OrderComponent', () => {
   let component: OrderComponent;
   let fixture: ComponentFixture<OrderComponent>;
   let cartService: jasmine.SpyObj<CartService>;
-
+  let mySpy;
 
   const p: IProduct[] = [
     {
@@ -147,23 +140,15 @@ describe('OrderComponent', () => {
   });
 
 
-  it('should  checkAddressData() have been caled in makeOrder() ', () => {
-
-    spyOn(component, 'makeOrder')
+  it('should sendOrder() and checkAddressData() have been called in makeOrder() ', () => {
     spyOn(component, 'checkAddressData')
+    spyOn(component, 'sendOrder')
+    
+    component.makeOrder('','','');
 
-
-    let phone = (document.querySelector('data-test="phone"') as HTMLInputElement).innerText;
-    let city = (document.querySelector('data-test="city"') as HTMLInputElement).innerText;
-    let address = (document.querySelector('data-test="address"') as HTMLInputElement).innerText;
-
-
-    component.makeOrder();
-    expect(component.checkAddressData).toHaveBeenCalledOnceWith(phone,city,address);
-
+    expect(component.checkAddressData).toHaveBeenCalled();
+    expect(component.sendOrder).toHaveBeenCalled();
   });
-
-
 });
 
 

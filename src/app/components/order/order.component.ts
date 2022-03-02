@@ -36,7 +36,7 @@ constructor(private cartService: CartService) { }
   }
 
 
-  makeOrder() {
+  makeOrder(phone: string, city: string, address: string) {
 
   }
 
