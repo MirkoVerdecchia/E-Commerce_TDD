@@ -123,7 +123,6 @@ describe('OrderComponent', () => {
     
   });
 
-  // capire come passare a1,a2,a3 al metodo mocked
   it('should check the address data', () => {
 
     var p1 = '0123456789';
