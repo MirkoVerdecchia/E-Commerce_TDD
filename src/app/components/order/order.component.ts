@@ -36,7 +36,13 @@ constructor(private cartService: CartService) { }
   }
 
 
-  makeOrder(phone: string, city: string, address: string) {
+
+  makeOrder(phone: string, city: string, address: string): void {
+    if(this.checkAddressData(phone, city, address)) {
+      let date = new Date();
+      let order: IOrder = {id :'', phone: phone, city: city, address: address, total: this.cartService.getTotal(), products: this.cartService.getDuplicate(), date: date.toLocaleDateString()};
+    }
+    this.sendOrder();
 
   }
 
