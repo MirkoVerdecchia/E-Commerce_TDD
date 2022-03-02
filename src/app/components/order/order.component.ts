@@ -46,10 +46,21 @@ constructor(private cartService: CartService) { }
   }
 
 
-  checkAddressData(phone: string, city: string, address: string){
-
+  checkAddressData(phone: string, city: string, address: string): boolean{
+    if(phone.length !== 10) {
+      alert("Inserire un numero di telefono corretto.");
+      return false;
+    }
+    if(city.length<1) {
+      alert("Inserire la città.");
+      return false;
+    }
+    if(address.length < 1) {
+      alert("Inserire la via e il civico.");
+      return false;
+    }
+    return true;
     
-
   }
 
 
