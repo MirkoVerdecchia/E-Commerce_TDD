@@ -18,6 +18,11 @@ describe('Nautes E-Commerce e2e Testing', () => {
     cy.get('body > app-root > app-order');
   });
 
+  it('shows the LOGIN page', () => {
+    cy.get('.nav-link').click();
+    cy.get('body > app-root > app-login');
+  });
+
   it('shows ALL the page', () => {
     cy.get('.button2').click();
     cy.get('body > app-root > app-product-list');
@@ -78,12 +83,23 @@ describe('Nautes E-Commerce e2e Testing', () => {
     );
   });
 
-  it('shows input text fields', () => {
+  it('shows input text fields in order page', () => {
     cy.get('.button3').click();
 
     cy.get('.phone');
     cy.get('.city');
     cy.get('.address');
+  });
+
+  it('shows input text fields in login page', () => {
+    cy.get('.nav-link').click();
+
+    cy.get(
+      'body > app-root > app-login > div > div > input[type=text]:nth-child(1)'
+    );
+    cy.get(
+      'body > app-root > app-login > div > div > input[type=text]:nth-child(2)'
+    );
   });
 });
 
