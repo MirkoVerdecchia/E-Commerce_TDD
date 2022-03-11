@@ -3,7 +3,7 @@
 		<div data-test= "name">{{ product.name }}</div>
 		<div data-test= "price" >{{ product.price }} €</div>
 		<div data-test= "quantity" >{{ numberProduct(product)}}</div>
-		<button class="removeButton" mat-raised-button >Rimuovi</button>
+		<button class="removeButton" mat-raised-button (click)= "removeFromCart(product)">Rimuovi</button>
 	</div>
 </div>
 
