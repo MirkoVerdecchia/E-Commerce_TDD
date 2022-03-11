@@ -26,17 +26,17 @@ describe('NavbarComponent', () => {
 
 
   it('should show home button link', () => {
-    expect(fixture.nativeElement.querySelector('[data-test="home"]')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.button1')).toBeTruthy();
   });
 
 
   it('should show product-list button link', () => {
-    expect(fixture.nativeElement.querySelector('[data-test="product-list"]')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.button2')).toBeTruthy();
   });
 
 
   it('should show order button link', () => {
-    expect(fixture.nativeElement.querySelector('[data-test="order"]')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.button3')).toBeTruthy();
   });
 
 
