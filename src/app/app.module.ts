@@ -12,6 +12,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CartService } from './service/cart.service';
 import { DataService } from './service/data.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AccountComponent } from './components/account/account.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -21,6 +24,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NavbarComponent,
     ProductListComponent,
+    AccountComponent,
+    AdminComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
