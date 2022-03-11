@@ -8,9 +8,9 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
-    })
-    .compileComponents();
+      declarations: [NavbarComponent],
+      providers: [],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,25 +19,19 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
   });
 
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 
   it('should show home button link', () => {
     expect(fixture.nativeElement.querySelector('.button1')).toBeTruthy();
   });
 
-
   it('should show product-list button link', () => {
     expect(fixture.nativeElement.querySelector('.button2')).toBeTruthy();
   });
 
-
   it('should show order button link', () => {
     expect(fixture.nativeElement.querySelector('.button3')).toBeTruthy();
   });
-
-
 });

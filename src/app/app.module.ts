@@ -10,6 +10,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CartService } from './service/cart.service';
+import { DataService } from './service/data.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,9 +27,10 @@ import { CartService } from './service/cart.service';
     AppRoutingModule,
     MatIconModule,
     MatToolbarModule,
+    HttpClientModule
   ],
   
-  providers: [CartService],
+  providers: [CartService, DataService, HttpClient, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

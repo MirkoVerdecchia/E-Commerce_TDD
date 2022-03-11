@@ -1,9 +1,5 @@
-import { jsDocComment } from '@angular/compiler';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppPage } from 'e2e/src/app.po';
 import { spyOnClass } from 'jasmine-es6-spies';
-import { ExpectedConditions } from 'protractor';
-import { Observable, of } from 'rxjs';
 import { IProduct } from 'src/app/interface/product';
 import { CartService } from 'src/app/service/cart.service';
 import { DataService } from 'src/app/service/data.service';
@@ -48,7 +44,7 @@ describe('ProductListComponent', () => {
       declarations: [ProductListComponent],
       providers: [
         { provide: DataService, useFactory: () => spyOnClass(DataService) }, //Use this to provide a mocked version of the dataService instead of the real versione, this will allow me to mock his methods
-        { provide: CartService, useFactory: () => spyOnClass(CartService) },
+        { provide: CartService, useFactory: () => spyOnClass(CartService) }
       ],
     }).compileComponents();
   });
