@@ -34,4 +34,8 @@ describe('NavbarComponent', () => {
   it('should show order button link', () => {
     expect(fixture.nativeElement.querySelector('.button3')).toBeTruthy();
   });
+
+  it('should show login button link', () => {
+    expect(fixture.nativeElement.querySelector('.button4')).toBeTruthy();
+  });
 });
