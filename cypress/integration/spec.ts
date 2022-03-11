@@ -23,6 +23,22 @@ describe('Nautes E-Commerce e2e Testing', () => {
     cy.get('body > app-root > app-login');
   });
 
+  it('should admin log and navigate to the admin page', () => {
+    cy.get('.butto4').click();
+    cy.get('.email').type('admin@gmail.it');
+    cy.get('.password').type('123');
+    cy.get('.buttonLog').click();
+    cy.get('body > app-root > app-admin');
+  });
+
+  it('should user log and navigate to the user page', () => {
+    cy.get('.button4').click();
+    cy.get('.email').type('user@gmail.it');
+    cy.get('.password').type('123');
+    cy.get('.buttonLog').click();
+    cy.get('body > app-root > app-account');
+  });
+
   it('shows ALL the page', () => {
     cy.get('.button2').click();
     cy.get('body > app-root > app-product-list');
@@ -35,7 +51,6 @@ describe('Nautes E-Commerce e2e Testing', () => {
 
     cy.get('.button4').click();
     cy.get('body > app-root > app-login');
-
   });
 
   it('shows product list', () => {
