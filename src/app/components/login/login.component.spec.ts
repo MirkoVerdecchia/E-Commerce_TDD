@@ -8,9 +8,8 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
-    })
-    .compileComponents();
+      declarations: [LoginComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -23,10 +22,27 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show login input text field', () => { 
-    expect(fixture.nativeElement.querySelector('[data-test="email"]')).toBeTruthy();
-    expect(fixture.nativeElement.querySelector('[data-test="password"]')).toBeTruthy();
-
+  it('should show login input text field', () => {
+    expect(
+      fixture.nativeElement.querySelector('[data-test="email"]')
+    ).toBeTruthy();
+    expect(
+      fixture.nativeElement.querySelector('[data-test="password"]')
+    ).toBeTruthy();
   });
 
+  it('should show login button', () => {
+    expect(fixture.nativeElement.querySelector('.buttonLog')).toBeTruthy();
+  });
+
+  it('should the login button call login() method', () => {
+    spyOn(component, 'logIn');
+
+    let button = fixture.debugElement.nativeElement.querySelector('.buttonLog');
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(component.logIn).toHaveBeenCalled();
+    });
+  });
 });
