@@ -79,9 +79,9 @@ describe('OrderComponent', () => {
 
   it('should show the order input text field', () => {
 
-    expect(fixture.nativeElement.querySelector('[data-test="phone"]')).toBeTruthy();
-    expect(fixture.nativeElement.querySelector('[data-test="city"]')).toBeTruthy();
-    expect(fixture.nativeElement.querySelector('[data-test="address"]')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.phone')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.city')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.address')).toBeTruthy();
 
   });
 
