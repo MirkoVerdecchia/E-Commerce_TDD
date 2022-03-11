@@ -67,7 +67,13 @@ describe('OrderComponent', () => {
 
   it('should show button for buy product', () => {
 
-    expect(fixture.nativeElement.querySelector('[data-test="buttonBuy"]')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.buttonBuy')).toBeTruthy();
+
+  });
+
+  it('should show button for delete product from the cart', () => {
+
+    expect(fixture.nativeElement.querySelector('.removeButton')).toBeTruthy();
 
   });
 
@@ -108,7 +114,7 @@ describe('OrderComponent', () => {
   it('should makeOrder have been called in button Click', async () => {
     spyOn(component, 'makeOrder')
 
-    let button = fixture.debugElement.nativeElement.querySelector('button');
+    let button = fixture.debugElement.nativeElement.querySelector('.buttonBuy');
     button.click();
 
     fixture.whenStable().then(() => {
