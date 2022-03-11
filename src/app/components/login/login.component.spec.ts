@@ -22,4 +22,10 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show login input text field', () => { 
+    expect(fixture.nativeElement.querySelector('.box')).toBeTruthy();
+
+  });
+
 });
