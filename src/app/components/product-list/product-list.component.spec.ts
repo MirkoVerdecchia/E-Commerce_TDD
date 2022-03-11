@@ -15,47 +15,42 @@ describe('ProductListComponent', () => {
   let dataService: jasmine.SpyObj<DataService>;
   let cartService: jasmine.SpyObj<CartService>;
 
-
-
-  const mockProduct1: IProduct = 
-    {
-      "id": "4",
-      "name": "test",
-      "price": 1.00,
-      "quantity": 1
-    };
-
+  const mockProduct1: IProduct = {
+    id: '4',
+    name: 'test',
+    price: 1.0,
+    quantity: 1,
+  };
 
   const mockProduct: IProduct[] = [
     {
-      "id": "1",
-      "name": "Sugar",
-      "price": 4.05,
-      "quantity": 16
+      id: '1',
+      name: 'Sugar',
+      price: 4.05,
+      quantity: 16,
     },
     {
-      "id": "2",
-      "name": "Bread",
-      "price": 1.13,
-      "quantity": 60
+      id: '2',
+      name: 'Bread',
+      price: 1.13,
+      quantity: 60,
     },
     {
-      "id": "3",
-      "name": "Rice",
-      "price": 9.58,
-      "quantity": 10
-    }];
-
+      id: '3',
+      name: 'Rice',
+      price: 9.58,
+      quantity: 10,
+    },
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductListComponent ],
+      declarations: [ProductListComponent],
       providers: [
         { provide: DataService, useFactory: () => spyOnClass(DataService) }, //Use this to provide a mocked version of the dataService instead of the real versione, this will allow me to mock his methods
-        { provide: CartService, useFactory: () => spyOnClass(CartService) }
-      ]
-    })
-    .compileComponents();
+        { provide: CartService, useFactory: () => spyOnClass(CartService) },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -63,68 +58,60 @@ describe('ProductListComponent', () => {
     component = fixture.componentInstance;
   });
 
-
   //beforeEach with the mock obj passed to the mock method
   beforeEach(() => {
     dataService = TestBed.get(DataService);
 
-    dataService.getProduct.and.returnValue((mockProduct));
+    dataService.getProduct.and.returnValue(mockProduct);
 
     fixture.detectChanges(); //Detect the changes on the DOM in runtime
   });
 
-
-  
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  
-
   it('should show products', () => {
-  
-    expect(fixture.nativeElement.querySelectorAll('[data-test="product"]').length).toBe(3);
-    
+    expect(
+      fixture.nativeElement.querySelectorAll('[data-test="product"]').length
+    ).toBe(3);
   });
 
   it('should show add product to cart button', () => {
+    expect(
+      fixture.nativeElement.querySelector('[data-test="addButton"]')
+    ).toBeTruthy();
+  });
 
-    expect(fixture.nativeElement.querySelector('[data-test="addButton"]')).toBeTruthy();
+  it('should show product details ', () => {
+    const products = fixture.nativeElement.querySelectorAll(
+      '[data-test="product"]'
+    );
 
-  })
-  
+    for (var i = 0; i < products.length; i++) {
+      expect(products[i].querySelector('[data-test="name"]').innerText).toEqual(
+        mockProduct[i].name
+      );
+      expect(
+        products[i].querySelector('[data-test="price"]').innerText
+      ).toEqual(mockProduct[i].price.toString());
+      expect(
+        products[i].querySelector('[data-test="quantity"]').innerText
+      ).toEqual(mockProduct[i].quantity.toString());
+    }
+  });
 
-it('should show product details ', () => {
+  it('should addProductToCart have been called in button Click', async () => {
+    spyOn(component, 'addProductToCart');
 
-  const products = fixture.nativeElement.querySelectorAll('[data-test="product"]');
+    let button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
 
-  for( var i = 0; i < products.length; i++) {
-
-    expect(products[i].querySelector('[data-test="name"]').innerText).toEqual(mockProduct[i].name);
-    expect(products[i].querySelector('[data-test="price"]').innerText).toEqual(mockProduct[i].price.toString());
-    expect(products[i].querySelector('[data-test="quantity"]').innerText).toEqual(mockProduct[i].quantity.toString());
-    
-  }
-
-
-});
-
-
-it('should addProductToCart have been called in button Click',  async() => {
-  spyOn(component, 'addProductToCart')
-
-  let button = fixture.debugElement.nativeElement.querySelector('button');
-  button.click();
-
-  fixture.whenStable().then(() => {
-    expect(component.addProductToCart).toHaveBeenCalled();
+    fixture.whenStable().then(() => {
+      expect(component.addProductToCart).toHaveBeenCalled();
+    });
   });
 });
-
-
-
-});
-
 
 /*
   it('should show list title "listino"', () => {
