@@ -122,11 +122,20 @@ describe('OrderComponent', () => {
     });
   });
 
+  it('should removeFromCart have been called in button Click', async () => {
+    spyOn(component, 'removeFromCart')
+
+    let button = fixture.debugElement.nativeElement.querySelector('.removeButton');
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(component.removeFromCart).toHaveBeenCalled();
+    });
+  });
 
   it('should make the order', () => {
     
 
-    
   });
 
   it('should check the address data', () => {
