@@ -1,40 +1,53 @@
 {
-    "product": [
-      {
-        "id": 1,
-        "name": "Sugar - Sweet N Low, Individual",
-        "price": 41.00,
-        "quantity": 16
-      },
-      {
-        "id": 2,
-        "name": "Mushroom - Morels, Dry",
-        "price": 16.13,
-        "quantity": 60
-      },
-      {
-        "id": 3,
-        "name": "Rice - Wild",
-        "price": 49.58,
-        "quantity": 10
-      },
-      {
-        "id": 4,
-        "name": "Energy Drink - Franks Original",
-        "price": 42.55,
-        "quantity": 70
-      },
-      {
-        "id": 5,
-        "name": "Soup - Campbells Chili",
-        "price": 11.47,
-        "quantity": 63
-      },
-      {
-        "id": 6,
-        "name": "Cookie Dough - Oatmeal Rasin",
-        "price": 9.50,
-        "quantity": 81
-      }
-    ]
+  "product": [
+    {
+      "id": 1,
+      "name": "Sugar - Sweet N Low, Individual",
+      "price": 41.0,
+      "description": ""
+    },
+    {
+      "id": 2,
+      "name": "Mushroom - Morels, Dry",
+      "price": 16.13,
+      "description": ""
+    },
+    {
+      "id": 3,
+      "name": "Rice - Wild",
+      "price": 49.58,
+      "description": ""
+    },
+    {
+      "id": 4,
+      "name": "Energy Drink - Franks Original",
+      "price": 42.55,
+      "description": ""
+    },
+    {
+      "id": 5,
+      "name": "Soup - Campbells Chili",
+      "price": 11.47,
+      "description": ""
+    },
+    {
+      "id": 6,
+      "name": "Cookie Dough - Oatmeal Rasin",
+      "price": 9.5,
+      "description": ""
+    }
+  ],
+  "account": [
+    {
+      "email": "user@gmail.it",
+      "password": "123"
+    },
+    {
+      "email": "admin@gmail.it",
+      "password": "123"
+    }
+  ],
+  "order": [
+    
+  ]
 }

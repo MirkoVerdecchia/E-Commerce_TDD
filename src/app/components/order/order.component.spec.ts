@@ -15,19 +15,19 @@ describe('OrderComponent', () => {
       "id": "1",
       "name": "Pane",
       "price": 1.50,
-      "quantity": 10
+      "description": ""
     },
     {
       "id": "2",
       "name": "Farina",
       "price": 2.50,
-      "quantity": 20
+      "description": ""
     },
     {
       "id": "3",
       "name": "Spaghetti",
       "price": 3.50,
-      "quantity": 30
+      "description": ""
     }
   ];
 

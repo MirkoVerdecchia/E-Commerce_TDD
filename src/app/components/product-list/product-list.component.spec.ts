@@ -12,30 +12,30 @@ describe('ProductListComponent', () => {
   let cartService: jasmine.SpyObj<CartService>;
 
   const mockProduct1: IProduct = {
-    id: '4',
-    name: 'test',
-    price: 1.0,
-    quantity: 1,
+    "id": '4',
+    "name": 'test',
+    "price": 1.0,
+    "description": ""
   };
 
   const mockProduct: IProduct[] = [
     {
-      id: '1',
-      name: 'Sugar',
-      price: 4.05,
-      quantity: 16,
+      "id": '1',
+      "name": 'Sugar',
+      "price": 4.05,
+      "description": ""
     },
     {
-      id: '2',
-      name: 'Bread',
-      price: 1.13,
-      quantity: 60,
+      "id": '2',
+      "name": 'Bread',
+      "price": 1.13,
+      "description": ""
     },
     {
-      id: '3',
-      name: 'Rice',
-      price: 9.58,
-      quantity: 10,
+      "id": '3',
+      "name": 'Rice',
+      "price": 9.58,
+      "description": ""
     },
   ];
 
@@ -92,8 +92,8 @@ describe('ProductListComponent', () => {
         products[i].querySelector('[data-test="price"]').innerText
       ).toEqual(mockProduct[i].price.toString());
       expect(
-        products[i].querySelector('[data-test="quantity"]').innerText
-      ).toEqual(mockProduct[i].quantity.toString());
+        products[i].querySelector('[data-test="description"]').innerText
+      ).toEqual(mockProduct[i].description);
     }
   });
 

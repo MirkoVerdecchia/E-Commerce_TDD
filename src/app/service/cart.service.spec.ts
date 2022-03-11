@@ -11,14 +11,14 @@ describe('CartService', () => {
     "id": "5",
     "name": "pippo",
     "price": 2.00,
-    "quantity": 2
+    "description": ""
   };
 
   const p_1 = {
     "id": "6",
     "name": "pluto",
     "price": 3.00,
-    "quantity": 3
+    "description": ""
   };
 
 
