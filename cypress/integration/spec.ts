@@ -19,7 +19,7 @@ describe('Nautes E-Commerce e2e Testing', () => {
   });
 
   it('shows the LOGIN page', () => {
-    cy.get('.nav-link').click();
+    cy.get('.button4').click();
     cy.get('body > app-root > app-login');
   });
 
@@ -32,6 +32,10 @@ describe('Nautes E-Commerce e2e Testing', () => {
 
     cy.get('.button1').click();
     cy.get('body > app-root > app-home');
+
+    cy.get('.button4').click();
+    cy.get('body > app-root > app-login');
+
   });
 
   it('shows product list', () => {
@@ -92,7 +96,7 @@ describe('Nautes E-Commerce e2e Testing', () => {
   });
 
   it('shows input text fields in login page', () => {
-    cy.get('.nav-link').click();
+    cy.get('.button4').click();
 
     cy.get(
       'body > app-root > app-login > div > div > input[type=text]:nth-child(1)'
