@@ -24,7 +24,8 @@ describe('LoginComponent', () => {
   });
 
   it('should show login input text field', () => { 
-    expect(fixture.nativeElement.querySelector('.box')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('[data-test="email"]')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('[data-test="password"]')).toBeTruthy();
 
   });
 
