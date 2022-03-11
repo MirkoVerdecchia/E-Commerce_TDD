@@ -2,39 +2,39 @@
   "product": [
     {
       "id": 1,
-      "name": "Sugar - Sweet N Low, Individual",
-      "price": 41.0,
-      "description": ""
+      "name": "Pasta",
+      "price": 1.5,
+      "description": "Pacco di pasta"
     },
     {
       "id": 2,
-      "name": "Mushroom - Morels, Dry",
-      "price": 16.13,
-      "description": ""
+      "name": "Sale grosso",
+      "price": 1,
+      "description": "Pacco sale grosso"
     },
     {
       "id": 3,
-      "name": "Rice - Wild",
-      "price": 49.58,
-      "description": ""
+      "name": "Farina ",
+      "price": 1.2,
+      "description": "Farina tipo 00"
     },
     {
       "id": 4,
-      "name": "Energy Drink - Franks Original",
-      "price": 42.55,
-      "description": ""
+      "name": "Coca-Cola",
+      "price": 1.5,
+      "description": "Bottiglia di Coca-Cola da 1.5 lt"
     },
     {
       "id": 5,
-      "name": "Soup - Campbells Chili",
-      "price": 11.47,
-      "description": ""
+      "name": "Nutella",
+      "price": 2,
+      "description": "Barattolo di nutella"
     },
     {
       "id": 6,
-      "name": "Cookie Dough - Oatmeal Rasin",
-      "price": 9.5,
-      "description": ""
+      "name": "Gocciole",
+      "price": 2.5,
+      "description": "Pacco da 1 kg di gocciole"
     }
   ],
   "account": [
@@ -47,7 +47,5 @@
       "password": "123"
     }
   ],
-  "order": [
-    
-  ]
+  "order": []
 }
