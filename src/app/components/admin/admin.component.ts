@@ -11,7 +11,7 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class AdminComponent implements OnInit {
 
-  private products: IProduct[] = [];
+  public products: IProduct[] = [];
 
 
   constructor(private accountService: AccountService, private dataService: DataService, private router: Router) {}

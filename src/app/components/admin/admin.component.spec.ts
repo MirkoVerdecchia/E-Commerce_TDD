@@ -2,13 +2,36 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { spyOnClass } from 'jasmine-es6-spies';
+import { IProduct } from 'src/app/interface/product';
 import { AccountService } from 'src/app/service/account.service';
-
+import { DataService } from 'src/app/service/data.service';
 import { AdminComponent } from './admin.component';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
   let fixture: ComponentFixture<AdminComponent>;
+  let dataService: jasmine.SpyObj<DataService>;
+
+  const mockProduct: IProduct[] = [
+    {
+      id: '1',
+      name: 'Sugar',
+      price: 4.05,
+      description: '',
+    },
+    {
+      id: '2',
+      name: 'Bread',
+      price: 1.13,
+      description: '',
+    },
+    {
+      id: '3',
+      name: 'Rice',
+      price: 9.58,
+      description: '',
+    },
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -18,11 +41,14 @@ describe('AdminComponent', () => {
           provide: AccountService,
           useFactory: () => spyOnClass(AccountService),
         },
+        {
+          provide: DataService,
+          useFactory: () => spyOnClass(DataService),
+        },
         HttpClient,
-        HttpHandler
+        HttpHandler,
       ],
       imports: [RouterTestingModule],
-
     }).compileComponents();
   });
 
@@ -30,6 +56,15 @@ describe('AdminComponent', () => {
     fixture = TestBed.createComponent(AdminComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  //beforeEach with the mock obj passed to the mock method
+  beforeEach(() => {
+    dataService = TestBed.get(DataService);
+
+    dataService.getProduct.and.returnValue(mockProduct);
+
+    fixture.detectChanges(); //Detect the changes on the DOM in runtime
   });
 
   it('should create', () => {
@@ -57,7 +92,8 @@ describe('AdminComponent', () => {
   it('should the button to create a product call createProduct()', () => {
     let spy = spyOn(component, 'createProduct');
 
-    let button = fixture.debugElement.nativeElement.querySelector('.buttonCreate');
+    let button =
+      fixture.debugElement.nativeElement.querySelector('.buttonCreate');
     button.click();
 
     fixture.whenStable().then(() => {
@@ -67,7 +103,7 @@ describe('AdminComponent', () => {
 
   it('should check the product data work', () => {
     var p1 = 'Sale';
-    var c1 = 10.00;
+    var c1 = 10.0;
     var a1 = 'Pacco di sale';
 
     var p2 = '';
@@ -75,7 +111,12 @@ describe('AdminComponent', () => {
     var a2 = '';
     expect(component.checkDataProduct(p1, c1, a1)).toBeTrue();
     expect(component.checkDataProduct(p2, c2, a2)).toBeFalse();
+  });
 
+  it('should show product to eliminate', () => {
+    expect(
+      fixture.nativeElement.querySelectorAll('.product').length
+    ).toBe(3);
   });
 
 });
