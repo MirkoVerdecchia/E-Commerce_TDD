@@ -20,5 +20,5 @@
     &nbsp;
     <input type="text" class="description" placeholder="descrizione" #description>
     &nbsp;
-    <button class="buttonCreate" >Crea</button>
+    <button class="buttonCreate" (click)="createProduct(name.value, price.value, description.value)">Crea</button>
     </div>

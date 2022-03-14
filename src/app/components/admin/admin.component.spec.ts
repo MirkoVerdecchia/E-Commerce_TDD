@@ -54,7 +54,7 @@ describe('AdminComponent', () => {
     expect(fixture.nativeElement.querySelector('.buttonCreate')).toBeTruthy();
   });
 
-  it('should show the button to create a product', () => {
+  it('should the button to create a product call createProduct()', () => {
     let spy = spyOn(component, 'createProduct');
 
     let button = fixture.debugElement.nativeElement.querySelector('.buttonCreate');
