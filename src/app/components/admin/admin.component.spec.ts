@@ -50,5 +50,8 @@ describe('AdminComponent', () => {
     expect(fixture.nativeElement.querySelector('.description')).toBeTruthy();
   });
 
+  it('should show the button to create a product', () => {
+    expect(fixture.nativeElement.querySelector('.buttonCreate')).toBeTruthy();
+  });
 
 });
