@@ -35,4 +35,10 @@ describe('AdminComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show the table title', () => {
+    expect(fixture.nativeElement.querySelector('.tableTitle')).toBeTruthy();
+  });
+
+
 });
