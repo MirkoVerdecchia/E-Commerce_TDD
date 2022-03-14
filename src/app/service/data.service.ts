@@ -3,45 +3,72 @@ import { IProduct } from '../interface/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { IOrder } from '../interface/order';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class DataService {
-
   private urlProduct = 'http://localhost:3000/product';
-  private product : IProduct[] = []
+  private urlOrder = 'http://localhost:3000/order';
+  private products: IProduct[] = [];
+  private orders: IOrder[] = [];
 
-  httpOptions: {headers: HttpHeaders} = {
-    headers: new HttpHeaders({"Content-Type": "application/json"})
+  httpOptions: { headers: HttpHeaders } = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private httpClient: HttpClient) { 
-    this.fetchAllProduct().subscribe(data => this.product = data, errore => console.log(errore));
-
-  }
-
-  fetchAllProduct(): Observable<IProduct[]> {
-    return this.httpClient.get<IProduct[]>(this.urlProduct, {responseType: "json"}).pipe(
-      tap((_) => console.log('fetchproduct')),
-      catchError(this.handleError<IProduct[]>("error fetch product", []))
+  constructor(private httpClient: HttpClient) {
+    this.fetchAllProduct().subscribe(
+      (data) => (this.products = data),
+      (errore) => console.log(errore)
     );
   }
 
-  handleError<T>(operation = "operation", result?: T) {
+  fetchAllProduct(): Observable<IProduct[]> {
+    return this.httpClient
+      .get<IProduct[]>(this.urlProduct, { responseType: 'json' })
+      .pipe(
+        tap((_) => console.log('fetchproduct')),
+        catchError(this.handleError<IProduct[]>('error fetch product', []))
+      );
+  }
+
+  fetchAllOrder(): Observable<IOrder[]> {
+    return this.httpClient
+      .get<IOrder[]>(this.urlOrder, { responseType: 'json' })
+      .pipe(
+        tap((_) => console.log('fetch order')),
+        catchError(this.handleError<IOrder[]>('errore fetch ordini', []))
+      );
+  }
+
+  postOrder(order: IOrder): Observable<IOrder> {
+    return this.httpClient
+      .post<IOrder>(this.urlOrder, order, this.httpOptions)
+      .pipe(catchError(this.handleError<IOrder>('postOrder')));
+  }
+
+  getOrders(): IOrder[] {
+    return this.orders;
+  }
+
+  getOrdersByUser(cUser: string): IOrder[] {
+    const o = this.orders.filter((o) => o.user == cUser);
+    if (o) {
+    }
+    return o;
+  }
+
+  getProduct(): IProduct[] {
+    return this.products;
+  }
+
+  handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
   }
-
-  getProduct(): IProduct[] {
-
-    //@todo add a real http call to get products.
-    return this.product;
-
-  }
-  
 
 }
