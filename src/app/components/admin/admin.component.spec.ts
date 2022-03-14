@@ -54,4 +54,15 @@ describe('AdminComponent', () => {
     expect(fixture.nativeElement.querySelector('.buttonCreate')).toBeTruthy();
   });
 
+  it('should show the button to create a product', () => {
+    let spy = spyOn(component, 'createProduct');
+
+    let button = fixture.debugElement.nativeElement.querySelector('.buttonCreate');
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
 });
