@@ -42,6 +42,17 @@ export class DataService {
         catchError(this.handleError<IOrder[]>('errore fetch ordini', []))
       );
   }
+  
+  deleteProduct(p: IProduct): Observable<IProduct> {
+    return this.httpClient.delete<IProduct>(this.urlProduct + '/' + p.id, this.httpOptions).pipe(
+      tap((_) => console.log('delete product' + p.id)),
+      catchError(this.handleError<IProduct>('error delete product'))
+    )
+  }
+
+  postProduct(p:IProduct): Observable<IProduct> {
+    return this.httpClient.post<IProduct>(this.urlProduct, p, this.httpOptions).pipe(catchError(this.handleError<IProduct>("postProduct")))
+  }
 
   postOrder(order: IOrder): Observable<IOrder> {
     return this.httpClient
