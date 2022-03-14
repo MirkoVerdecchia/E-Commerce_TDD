@@ -40,4 +40,8 @@ describe('AccountComponent', () => {
     expect(fixture.nativeElement.querySelector('.orderList')).toBeTruthy();
   });
 
+  it('should show order list title', () => {
+    expect(fixture.nativeElement.querySelector('.orderTitle')).toBeTruthy();
+  });
+
 });
