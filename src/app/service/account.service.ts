@@ -66,8 +66,15 @@ export class AccountService {
       );
   }
 
-  async logOut() {}
-
+  async logOut() {
+    if (this.isLoggedIn) {
+      this.isLoggedIn = false;
+      alert("ARRIVEDERCI");
+    } else {
+      alert("NON SEI ANCORA AUTENTICATO");
+    }
+    }
+  
   isAdmin(): boolean {
     return this.admin;
   }
