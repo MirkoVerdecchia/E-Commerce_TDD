@@ -35,4 +35,9 @@ describe('AccountComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show order list box', () => {
+    expect(fixture.nativeElement.querySelector('.orderList')).toBeTruthy();
+  });
+
 });
