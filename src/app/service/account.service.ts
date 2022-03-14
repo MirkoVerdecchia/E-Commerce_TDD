@@ -10,6 +10,7 @@ import { IUser } from '../interface/user';
 })
 export class AccountService {
   private isLoggedIn = false;
+  private correntUser: string = '';
   private admin = true;
   private users: IUser[] = [];
   private urlAccount = 'http://localhost:3000/account';
@@ -46,6 +47,7 @@ export class AccountService {
     );
     if (user) {
       if (!this.isLoggedIn) {
+        this.correntUser = email;
         this.isLoggedIn = true;
 
         if (email !== 'admin@gmail.it') {
@@ -72,6 +74,10 @@ export class AccountService {
 
   isLogged(): boolean {
     return this.isLoggedIn;
+  }
+
+  public get getUserEmail(): string {
+    return this.correntUser;
   }
 
   handleError<T>(operation = 'operation', result?: T) {

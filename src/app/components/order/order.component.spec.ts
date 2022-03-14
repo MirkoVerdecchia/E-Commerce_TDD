@@ -10,7 +10,6 @@ describe('OrderComponent', () => {
   let component: OrderComponent;
   let fixture: ComponentFixture<OrderComponent>;
   let cartService: jasmine.SpyObj<CartService>;
-  let mySpy;
 
   const p: IProduct[] = [
     {
