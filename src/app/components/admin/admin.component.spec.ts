@@ -44,4 +44,11 @@ describe('AdminComponent', () => {
     expect(fixture.nativeElement.querySelector('.listBox')).toBeTruthy();
   });
 
+  it('should show the details input text to create a product ', () => {
+    expect(fixture.nativeElement.querySelector('.name')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.price')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.description')).toBeTruthy();
+  });
+
+
 });
