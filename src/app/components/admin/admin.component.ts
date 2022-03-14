@@ -10,16 +10,15 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
+
   private products: IProduct[] = [];
 
-  constructor(
-    private accountService: AccountService,
-    private dataService: DataService,
-    private router: Router
-  ) {}
+
+  constructor(private accountService: AccountService, private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.products = this.dataService.getProduct();
+
 
     if (!this.accountService.isAdmin()) {
       this.router.navigateByUrl('/account');
@@ -35,4 +34,11 @@ export class AdminComponent implements OnInit {
 
   public createProduct(name: string, price: string, description: string): void {
   }
+
+  public checkDataProduct(name: string, price: number, description: string): void {
+  }
+
+
+
+
 }

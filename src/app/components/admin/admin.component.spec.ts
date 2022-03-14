@@ -65,4 +65,17 @@ describe('AdminComponent', () => {
     });
   });
 
+  it('should check the product data work', () => {
+    var p1 = 'Sale';
+    var c1 = 10.00;
+    var a1 = 'Pacco di sale';
+
+    var p2 = '';
+    var c2 = -1;
+    var a2 = '';
+    expect(component.checkDataProduct(p1, c1, a1)).toBeTrue();
+    expect(component.checkDataProduct(p2, c2, a2)).toBeFalse();
+
+  });
+
 });
