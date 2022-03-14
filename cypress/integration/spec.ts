@@ -120,6 +120,43 @@ describe('Nautes E-Commerce e2e Testing', () => {
       'body > app-root > app-login > div > div > input[type=text]:nth-child(2)'
     );
   });
+  
+  it('shoul the admin create a new product and delete it', () => {
+    //access to admin page
+    cy.get('.nav-link').click();
+    cy.get('.email').type('admin@gmail.it');
+    cy.get('.password').type('123');
+    cy.get('.buttonLog').click();
+
+    //create the product
+    cy.get('.name').type('Cypress test');
+    cy.get('.price').type('10');
+    cy.get('.description').type('Cypress description test');
+    cy.get('.buttonCreate').click();
+
+    //reload the page
+    cy.reload();
+
+    //come back to the user page
+    cy.get('.nav-link').click();
+    cy.get('.email').type('admin@gmail.it');
+    cy.get('.password').type('123');
+    cy.get('.buttonLog').click();
+
+    //delete the product
+    cy.get(
+      '#ss_elem_list > tbody > tr:nth-child(7) > td:nth-child(5) > button'
+    ).click();
+
+    //reload the page
+    cy.reload();
+
+    //come back to the user page
+    cy.get('.nav-link').click();
+    cy.get('.email').type('admin@gmail.it');
+    cy.get('.password').type('123');
+    cy.get('.buttonLog').click();
+  });
 });
 
 describe('Mobile App Testing', () => {
