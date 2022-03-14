@@ -36,12 +36,21 @@ describe('AccountComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show order list box', () => {
+  it('should show the order list box', () => {
     expect(fixture.nativeElement.querySelector('.orderList')).toBeTruthy();
   });
 
-  it('should show order list title', () => {
+  it('should show the order list title', () => {
     expect(fixture.nativeElement.querySelector('.orderTitle')).toBeTruthy();
   });
+
+  it('should show the order details', () => {
+    expect(fixture.nativeElement.querySelector('.id')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.total')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.date')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.numberP')).toBeTruthy();
+  });
+
+
 
 });
