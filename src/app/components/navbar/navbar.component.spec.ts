@@ -1,5 +1,6 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {
@@ -9,7 +10,8 @@ describe('NavbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavbarComponent],
-      providers: [],
+      providers: [HttpClient, HttpHandler],
+      imports: [RouterTestingModule],
     }).compileComponents();
   });
 
@@ -46,19 +48,16 @@ describe('NavbarComponent', () => {
   it('should logOut button call logOut()', () => {
     let spy = spyOn(component, 'logOut');
 
-    let button = fixture.debugElement.nativeElement.querySelector('.buttonLogout');
+    let button =
+      fixture.debugElement.nativeElement.querySelector('.buttonLogout');
     button.click();
 
     fixture.whenStable().then(() => {
       expect(spy).toHaveBeenCalled();
     });
   });
-  
 
   it('should show account button link', () => {
     expect(fixture.nativeElement.querySelector('.buttonAccount')).toBeTruthy();
   });
-
-
-
 });
