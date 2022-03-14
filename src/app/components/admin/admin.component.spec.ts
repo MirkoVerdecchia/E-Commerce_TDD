@@ -1,4 +1,8 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { spyOnClass } from 'jasmine-es6-spies';
+import { AccountService } from 'src/app/service/account.service';
 
 import { AdminComponent } from './admin.component';
 
@@ -8,9 +12,18 @@ describe('AdminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminComponent ]
-    })
-    .compileComponents();
+      declarations: [AdminComponent],
+      providers: [
+        {
+          provide: AccountService,
+          useFactory: () => spyOnClass(AccountService),
+        },
+        HttpClient,
+        HttpHandler
+      ],
+      imports: [RouterTestingModule],
+
+    }).compileComponents();
   });
 
   beforeEach(() => {

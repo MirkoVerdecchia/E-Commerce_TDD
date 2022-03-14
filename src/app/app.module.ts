@@ -16,7 +16,6 @@ import { AccountComponent } from './components/account/account.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +27,7 @@ import { LoginComponent } from './components/login/login.component';
     AdminComponent,
     LoginComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,8 +35,14 @@ import { LoginComponent } from './components/login/login.component';
     MatToolbarModule,
     HttpClientModule
   ],
-  
-  providers: [CartService, DataService, HttpClient, HttpClientModule],
-  bootstrap: [AppComponent]
+
+  providers: [
+    CartService,
+    DataService,
+    HttpClient,
+    HttpClientModule
+  ],
+
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

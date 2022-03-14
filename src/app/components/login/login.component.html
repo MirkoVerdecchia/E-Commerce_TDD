@@ -1,10 +1,10 @@
 <div class="box">
   <span style="size: 30px" style="font-family: arial"> JOIN US </span>
   <div class="box3">
-    <input data-test="email" type="text" placeholder="E-mail" #email />
+    <input class="email" type="text" placeholder="E-mail" #email />
     &nbsp;
-    <input data-test="password" type="text" placeholder="Password" #password />
+    <input class="password" type="text" placeholder="Password" #password />
     &nbsp;
-    <button class="buttonLog" (click)="logIn()">Entra</button>
+    <button class="buttonLog" (click)="logIn(email.value, password.value)">Entra</button>
   </div>
 </div>

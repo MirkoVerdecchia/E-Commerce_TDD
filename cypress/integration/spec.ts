@@ -24,7 +24,7 @@ describe('Nautes E-Commerce e2e Testing', () => {
   });
 
   it('should admin log and navigate to the admin page', () => {
-    cy.get('.butto4').click();
+    cy.get('.button4').click();
     cy.get('.email').type('admin@gmail.it');
     cy.get('.password').type('123');
     cy.get('.buttonLog').click();
