@@ -40,5 +40,8 @@ describe('AdminComponent', () => {
     expect(fixture.nativeElement.querySelector('.tableTitle')).toBeTruthy();
   });
 
+  it('should show the deletable products ', () => {
+    expect(fixture.nativeElement.querySelector('.listBox')).toBeTruthy();
+  });
 
 });
