@@ -122,13 +122,13 @@ describe('AdminComponent', () => {
     expect(fixture.nativeElement.querySelectorAll('[data-test="product"]').length).toBe(3);
   });
 
-  // it('should show product details to eliminate ', () => {
-  //   const products = fixture.nativeElement.querySelectorAll('[data-test="product"]');
+  it('should show product details to eliminate ', () => {
+    const products = fixture.nativeElement.querySelectorAll('[data-test="product"]');
 
-  //   for (var i = 0; i < products.length; i++) {
-  //     expect(products[i].querySelector('.name').innerText).toEqual(mockProduct[i].name);
-  //     expect(products[i].querySelector('.price').innerText).toEqual(mockProduct[i].price.toString());
-  //     expect(products[i].querySelector('.description').innerText).toEqual(mockProduct[i].description);
-  //   }
-  // });
+    for (var i = 0; i < products.length; i++) {
+      expect(products[i].querySelector('.name').innerText).toEqual(mockProduct[i].name);
+      expect(products[i].querySelector('.price').innerText).toEqual(mockProduct[i].price.toString() + ' €');
+      expect(products[i].querySelector('.description').innerText).toEqual(mockProduct[i].description);
+    }
+  });
 });

@@ -25,10 +25,6 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  public getProduct(): IProduct[] {
-    return this.products;
-  }
-
   public deleteProduct(product: IProduct): void {
   }
 
