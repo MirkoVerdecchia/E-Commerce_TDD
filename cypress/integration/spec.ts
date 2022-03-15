@@ -59,10 +59,7 @@ describe('Nautes E-Commerce e2e Testing', () => {
 
     cy.get('.button2').click();
 
-    cy.get('body > app-root > app-product-list > div > div').should(
-      'have.length',
-      '6'
-    );
+    cy.get('body > app-root > app-product-list > div > div').should('have.length','6');
   });
 
   it('should add product from the list to the cart and show it', () => {
@@ -74,10 +71,7 @@ describe('Nautes E-Commerce e2e Testing', () => {
 
     cy.get('.button3').click();
 
-    cy.get('body > app-root > app-order > div > div').should(
-      'have.length',
-      '6'
-    );
+    cy.get('body > app-root > app-order > div > div').should('have.length','6');
   });
 
   it('should remove product from the cart', () => {
@@ -89,17 +83,11 @@ describe('Nautes E-Commerce e2e Testing', () => {
 
     cy.get('.button3').click();
 
-    cy.get('body > app-root > app-order > div > div').should(
-      'have.length',
-      '6'
-    );
+    cy.get('body > app-root > app-order > div > div').should('have.length','6');
 
     cy.get('.button3').click();
     cy.get('.removeButton').click({ multiple: true });
-    cy.get('body > app-root > app-order > div > div').should(
-      'have.length',
-      '0'
-    );
+    cy.get('body > app-root > app-order > div > div').should('have.length','0');
   });
 
   it('shows input text fields in order page', () => {
@@ -113,49 +101,31 @@ describe('Nautes E-Commerce e2e Testing', () => {
   it('shows input text fields in login page', () => {
     cy.get('.button4').click();
 
-    cy.get(
-      'body > app-root > app-login > div > div > input[type=text]:nth-child(1)'
-    );
-    cy.get(
-      'body > app-root > app-login > div > div > input[type=text]:nth-child(2)'
-    );
+    cy.get('body > app-root > app-login > div > div > input[type=text]:nth-child(1)');
+    cy.get('body > app-root > app-login > div > div > input[type=text]:nth-child(2)');
   });
-  
-  it('shoul the admin create a new product and delete it', () => {
+
+  it('should the admin create a new product and delete it', () => {
     //access to admin page
-    cy.get('.nav-link').click();
+    cy.get('.button4').click();
     cy.get('.email').type('admin@gmail.it');
     cy.get('.password').type('123');
     cy.get('.buttonLog').click();
 
     //create the product
-    cy.get('.name').type('Cypress test');
-    cy.get('.price').type('10');
-    cy.get('.description').type('Cypress description test');
+    cy.get('.nameI').type('Cypress test');
+    cy.get('.priceI').type('10');
+    cy.get('.descriptionI').type('Cypress description test');
     cy.get('.buttonCreate').click();
 
-    //reload the page
-    cy.reload();
-
-    //come back to the user page
-    cy.get('.nav-link').click();
-    cy.get('.email').type('admin@gmail.it');
-    cy.get('.password').type('123');
-    cy.get('.buttonLog').click();
+    //search the product just create
+    cy.get('body > app-root > app-admin > ul > div:nth-child(8)');
 
     //delete the product
-    cy.get(
-      '#ss_elem_list > tbody > tr:nth-child(7) > td:nth-child(5) > button'
-    ).click();
+    cy.get('body > app-root > app-admin > ul > div:nth-child(8) > td:nth-child(5) > button').click();
 
-    //reload the page
-    cy.reload();
-
-    //come back to the user page
-    cy.get('.nav-link').click();
-    cy.get('.email').type('admin@gmail.it');
-    cy.get('.password').type('123');
-    cy.get('.buttonLog').click();
+    //check if the product is deleted
+    cy.get('body > app-root > app-admin > ul > div:nth-child(8)').should('not.exist');
   });
 });
 

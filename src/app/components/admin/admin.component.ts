@@ -10,7 +10,7 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  public products: IProduct[] = [];
+  private products: IProduct[] = [];
 
   constructor(
     private accountService: AccountService,
@@ -25,23 +25,48 @@ export class AdminComponent implements OnInit {
       this.router.navigateByUrl('account');
     }
   }
+  public getProduct(): IProduct[] {
+    return this.products;
+  }
+
+  public updateProduct() {
+    this.dataService.fetchAllProduct().subscribe((p) => (this.products = p));
+  }
 
   public deleteProduct(product: IProduct): void {
     this.dataService.deleteProduct(product).subscribe(
-      () => console.log('Prodotto ' + product.id + ' eliminato'),
+      () => {
+        this.updateProduct();
+        console.log('Prodotto ' + product.id + ' eliminato');
+      },
       (error) => console.log(error)
     );
   }
 
-  public createProduct( name: string, price: string, description: string ): void {
-    var p: number =+ price;
+  public createProduct(name: string, price: string, description: string): void {
+    var p: number = +price;
     if (this.checkDataProduct(name, p, description)) {
-      let product: IProduct = { id: '', name: name, price: p, description: description};
-      this.dataService.postProduct(product).subscribe(() => console.log('Prodotto inserito'), error => console.log(error))
+      let product: IProduct = {
+        id: '',
+        name: name,
+        price: p,
+        description: description,
+      };
+      this.dataService.postProduct(product).subscribe(
+        () =>{
+          this.updateProduct();
+          console.log('Prodotto inserito');
+        },
+        (error) => console.log(error)
+      );
     }
   }
 
-  public checkDataProduct( name: string, price: number, description: string ): boolean {
+  public checkDataProduct(
+    name: string,
+    price: number,
+    description: string
+  ): boolean {
     if (name.length <= 1) {
       console.log('inserisci un numero corretto');
       return false;

@@ -1,3 +1,4 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
@@ -8,9 +9,9 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
-    })
-    .compileComponents();
+      declarations: [HomeComponent],
+      providers: [HttpClient, HttpHandler],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -24,15 +25,14 @@ describe('HomeComponent', () => {
   });
 
   it('should show logo', () => {
-
-    expect(fixture.nativeElement.querySelector('[data-test="logo"]')).toBeTruthy();
-
+    expect(
+      fixture.nativeElement.querySelector('[data-test="logo"]')
+    ).toBeTruthy();
   });
 
   it('should show Name', () => {
-
-    expect(fixture.nativeElement.querySelector('[data-test="name"]')).toBeTruthy();
-
+    expect(
+      fixture.nativeElement.querySelector('[data-test="name"]')
+    ).toBeTruthy();
   });
-
 });

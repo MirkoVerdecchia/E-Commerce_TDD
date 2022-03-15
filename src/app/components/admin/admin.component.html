@@ -11,7 +11,7 @@
       <th class="text-left">Elimina</th>
     </tr>
   </thead>
-    <div data-test="product" *ngFor="let product of products">
+    <div data-test="product" *ngFor="let product of getProduct()">
         <td class="id">{{product.id}}</td>
         <td class="name">{{product.name}}</td>
         <td class="price">{{product.price.toFixed(2)}} €</td>
