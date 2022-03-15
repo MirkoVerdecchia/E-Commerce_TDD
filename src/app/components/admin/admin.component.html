@@ -12,7 +12,10 @@
     </tr>
   </thead>
     <div data-test="product" *ngFor="let product of products">
-      product
+        <td class="id">{{product.id}}</td>
+        <td class="name">{{product.name}}</td>
+        <td class="price">{{product.price.toFixed(2)}} €</td>
+        <td class="description">{{product.description}}</td>
     </div>
 </ul>
 <div class="box3">
