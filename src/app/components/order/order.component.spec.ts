@@ -146,13 +146,20 @@ describe('OrderComponent', () => {
     expect(component.checkAddressData(p2, c2, a2)).toBeFalse();
   });
 
-  it('should sendOrder() and checkAddressData() have been called in makeOrder() ', () => {
+  it('should checkAddressData() have been called in makeOrder() ', () => {
     spyOn(component, 'checkAddressData');
-    // spyOn(component, 'sendOrder');
 
-    component.makeOrder('', '', '');
+    component.makeOrder('3921899677', 'Roma', 'Via Roma');
 
     expect(component.checkAddressData).toHaveBeenCalled();
-    // expect(component.sendOrder).toHaveBeenCalled();
   });
+
+  it('should sendOrder() have been called in makeOrder() ', () => {
+    spyOn(component, 'sendOrder');
+
+    component.makeOrder('3921899677', 'Roma', 'Via Roma');
+
+    expect(component.sendOrder).toHaveBeenCalled();
+  });
+
 });

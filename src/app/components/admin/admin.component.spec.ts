@@ -98,14 +98,14 @@ describe('AdminComponent', () => {
   });
 
   it('should the button to create a product call createProduct()', () => {
-    spyOn(component, 'createProduct');
+    let spy = spyOn(component, 'createProduct');
 
     let button =
       fixture.debugElement.nativeElement.querySelector('.buttonCreate');
     button.click();
 
     fixture.whenStable().then(() => {
-      expect(component.createProduct).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalled();
     });
   });
 
