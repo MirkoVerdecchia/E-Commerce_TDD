@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     this.users = this.accountService.getUser();
 
     if (this.accountService.isLogged()) {
-       this.router.navigateByUrl('/account');
+       this.router.navigateByUrl('account');
     }
   }
 

@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit {
 
 
     if (!this.accountService.isAdmin()) {
-      this.router.navigateByUrl('/account');
+      this.router.navigateByUrl('account');
     }
   }
 

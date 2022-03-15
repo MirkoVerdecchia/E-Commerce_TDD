@@ -57,24 +57,17 @@ export class AccountService {
           this.router.navigateByUrl('/admin');
           this.admin = true;
         }
-      } else {
-        alert("SEI GIA' AUTENTICATO");
       }
-    } else
-      alert(
-        "NON SEI ANCORA REGISTRATO, PER ENTRARE NELL'AREA UTENTI REGISTRATI"
-      );
+    }
   }
 
   async logOut() {
     if (this.isLoggedIn) {
       this.isLoggedIn = false;
-      alert("ARRIVEDERCI");
     } else {
-      alert("NON SEI ANCORA AUTENTICATO");
     }
-    }
-  
+  }
+
   isAdmin(): boolean {
     return this.admin;
   }

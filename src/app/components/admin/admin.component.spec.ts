@@ -5,6 +5,7 @@ import { spyOnClass } from 'jasmine-es6-spies';
 import { IProduct } from 'src/app/interface/product';
 import { AccountService } from 'src/app/service/account.service';
 import { DataService } from 'src/app/service/data.service';
+import { AccountComponent } from '../account/account.component';
 import { AdminComponent } from './admin.component';
 
 describe('AdminComponent', () => {
@@ -48,7 +49,11 @@ describe('AdminComponent', () => {
         HttpClient,
         HttpHandler,
       ],
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule.withRoutes([
+          { path: 'account', component: AccountComponent },
+        ]),
+      ],
     }).compileComponents();
   });
 
@@ -80,9 +85,9 @@ describe('AdminComponent', () => {
   });
 
   it('should show the details input text to create a product ', () => {
-    expect(fixture.nativeElement.querySelector('.name')).toBeTruthy();
-    expect(fixture.nativeElement.querySelector('.price')).toBeTruthy();
-    expect(fixture.nativeElement.querySelector('.description')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.nameI')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.priceI')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.descriptionI')).toBeTruthy();
   });
 
   it('should show the button to create a product', () => {
@@ -114,9 +119,16 @@ describe('AdminComponent', () => {
   });
 
   it('should show product to eliminate', () => {
-    expect(
-      fixture.nativeElement.querySelectorAll('.product').length
-    ).toBe(3);
+    expect(fixture.nativeElement.querySelectorAll('[data-test="product"]').length).toBe(3);
   });
 
+  // it('should show product details to eliminate ', () => {
+  //   const products = fixture.nativeElement.querySelectorAll('[data-test="product"]');
+
+  //   for (var i = 0; i < products.length; i++) {
+  //     expect(products[i].querySelector('.name').innerText).toEqual(mockProduct[i].name);
+  //     expect(products[i].querySelector('.price').innerText).toEqual(mockProduct[i].price.toString());
+  //     expect(products[i].querySelector('.description').innerText).toEqual(mockProduct[i].description);
+  //   }
+  // });
 });
