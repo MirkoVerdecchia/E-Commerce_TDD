@@ -15,6 +15,10 @@ describe('Nautes E-Commerce e2e Testing', () => {
 
   it('shows the ORDER page', () => {
     cy.get('.button3').click();
+    cy.get('.email').type('admin@gmail.it');
+    cy.get('.password').type('123');
+    cy.get('.buttonLog').click();
+    cy.get('.button3').click();
     cy.get('body > app-root > app-order');
   });
 
@@ -44,13 +48,15 @@ describe('Nautes E-Commerce e2e Testing', () => {
     cy.get('body > app-root > app-product-list');
 
     cy.get('.button3').click();
+    cy.get('.email').type('admin@gmail.it');
+    cy.get('.password').type('123');
+    cy.get('.buttonLog').click();
+    cy.get('.button3').click();
     cy.get('body > app-root > app-order');
 
     cy.get('.button1').click();
     cy.get('body > app-root > app-home');
 
-    cy.get('.button4').click();
-    cy.get('body > app-root > app-login');
   });
 
   it('shows product list', () => {
@@ -70,6 +76,10 @@ describe('Nautes E-Commerce e2e Testing', () => {
     cy.get('.button').click({ multiple: true });
 
     cy.get('.button3').click();
+    cy.get('.email').type('admin@gmail.it');
+    cy.get('.password').type('123');
+    cy.get('.buttonLog').click();
+    cy.get('.button3').click();
 
     cy.get('body > app-root > app-order > div > div').should('have.length','6');
   });
@@ -82,6 +92,10 @@ describe('Nautes E-Commerce e2e Testing', () => {
     cy.get('.button').click({ multiple: true });
 
     cy.get('.button3').click();
+    cy.get('.email').type('admin@gmail.it');
+    cy.get('.password').type('123');
+    cy.get('.buttonLog').click();
+    cy.get('.button3').click();
 
     cy.get('body > app-root > app-order > div > div').should('have.length','6');
 
@@ -91,6 +105,10 @@ describe('Nautes E-Commerce e2e Testing', () => {
   });
 
   it('shows input text fields in order page', () => {
+    cy.get('.button3').click();
+    cy.get('.email').type('admin@gmail.it');
+    cy.get('.password').type('123');
+    cy.get('.buttonLog').click();
     cy.get('.button3').click();
 
     cy.get('.phone');

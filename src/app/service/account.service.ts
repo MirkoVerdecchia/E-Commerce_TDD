@@ -63,6 +63,7 @@ export class AccountService {
 
   async logOut() {
     if (this.isLoggedIn) {
+      this.correntUser = '';
       this.isLoggedIn = false;
     } else {
     }

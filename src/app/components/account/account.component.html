@@ -12,7 +12,7 @@
     <table class="orderList">
       <div class="orders" *ngFor="let order of correntOrders">
         <td class="id">{{ order.id }}</td>
-        <td class="total">{{ order.total }}</td>
+        <td class="total">€{{ order.total }}</td>
         <td class="date">{{ order.date }}</td>
         <td class="numberP">{{ order.products.length }}</td>
       </div>

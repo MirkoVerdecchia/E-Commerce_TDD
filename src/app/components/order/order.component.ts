@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { IOrder } from 'src/app/interface/order';
 import { IProduct } from 'src/app/interface/product';
 import { AccountService } from 'src/app/service/account.service';
 import { CartService } from 'src/app/service/cart.service';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-order',
@@ -15,10 +17,17 @@ export class OrderComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private dataService: DataService,
+    private router: Router
+
   ) {}
 
   ngOnInit(): void {
+    if (!this.accountService.isLogged()) {
+      this.router.navigateByUrl('/login');
+      alert('DEVI EFFETTUARE IL LOGIN PER PROCEDERE CON UN ORDINE');
+    }
     this.cart = this.cartService.getCart();
   }
 
@@ -46,11 +55,20 @@ export class OrderComponent implements OnInit {
         products: this.cartService.getDuplicate(),
         date: date.toLocaleDateString(),
       };
+      this.sendOrder(order);
     }
-    this.sendOrder();
   }
 
-  sendOrder() {}
+  sendOrder(order: IOrder): void {
+    this.dataService.postOrder(order).subscribe(
+      (response) => {
+        this.cartService.cleanCart();
+        this.router.navigateByUrl('/account');
+        this.dataService.fetchAllOrder().subscribe;
+      },
+      (error) => console.log('ERROR: ', error)
+    );
+  }
 
   //TESTED
   checkAddressData(phone: string, city: string, address: string): boolean {
