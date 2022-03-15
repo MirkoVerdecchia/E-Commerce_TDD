@@ -83,6 +83,10 @@ describe('AdminComponent', () => {
     expect(fixture.nativeElement.querySelector('.listBox')).toBeTruthy();
   });
 
+  it('should show the button to delete product from the list ', () => {
+    expect(fixture.nativeElement.querySelector('.buttonDelete')).toBeTruthy();
+  });
+
   it('should show the details input text to create a product ', () => {
     expect(fixture.nativeElement.querySelector('.nameI')).toBeTruthy();
     expect(fixture.nativeElement.querySelector('.priceI')).toBeTruthy();
