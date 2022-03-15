@@ -9,33 +9,25 @@ describe('ProductListComponent', () => {
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
   let dataService: jasmine.SpyObj<DataService>;
-  let cartService: jasmine.SpyObj<CartService>;
-
-  const mockProduct1: IProduct = {
-    "id": '4',
-    "name": 'test',
-    "price": 1.0,
-    "description": ""
-  };
 
   const mockProduct: IProduct[] = [
     {
-      "id": '1',
-      "name": 'Sugar',
-      "price": 4.05,
-      "description": ""
+      id: '1',
+      name: 'Sugar',
+      price: 4.05,
+      description: '',
     },
     {
-      "id": '2',
-      "name": 'Bread',
-      "price": 1.13,
-      "description": ""
+      id: '2',
+      name: 'Bread',
+      price: 1.13,
+      description: '',
     },
     {
-      "id": '3',
-      "name": 'Rice',
-      "price": 9.58,
-      "description": ""
+      id: '3',
+      name: 'Rice',
+      price: 9.58,
+      description: '',
     },
   ];
 
@@ -44,7 +36,6 @@ describe('ProductListComponent', () => {
       declarations: [ProductListComponent],
       providers: [
         { provide: DataService, useFactory: () => spyOnClass(DataService) }, //Use this to provide a mocked version of the dataService instead of the real versione, this will allow me to mock his methods
-        { provide: CartService, useFactory: () => spyOnClass(CartService) }
       ],
     }).compileComponents();
   });
@@ -108,19 +99,3 @@ describe('ProductListComponent', () => {
     });
   });
 });
-
-/*
-  it('should show list title "listino"', () => {
-    expect(fixture.nativeElement.querySelector('[data-test="product_list"]')).toBeTruthy();
-  });
-
-
-  it('should show the listBox ', () => {
-    expect(fixture.nativeElement.querySelector('[id="ss_elem_list"]')).toBeTruthy();
-  });
-
-
-  it('should show the intestatio of the product details ', () => {
-    expect(fixture.nativeElement.querySelector('[data-test="thead"]')).toBeTruthy();
-  });
-*/

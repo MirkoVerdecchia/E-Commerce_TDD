@@ -106,7 +106,7 @@ describe('OrderComponent', () => {
     }
   });
 
-  it('should makeOrder have been called in button Click', async () => {
+  it('should makeOrder() have been called in button Click', async () => {
     spyOn(component, 'makeOrder');
 
     let button = fixture.debugElement.nativeElement.querySelector('.buttonBuy');
@@ -117,7 +117,7 @@ describe('OrderComponent', () => {
     });
   });
 
-  it('should removeFromCart have been called in button Click', async () => {
+  it('should removeFromCart() have been called in button Click', async () => {
     spyOn(component, 'removeFromCart');
 
     let button =
