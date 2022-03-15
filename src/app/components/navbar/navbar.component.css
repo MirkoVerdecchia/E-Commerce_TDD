@@ -1,10 +1,22 @@
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
-
-.mat-elevation-z6{
-    background-color: rgba(195, 206, 101, 0.521);
-    
+.mat-elevation-z6 {
+  background-color: rgba(195, 206, 101, 0.521);
 }
-  
+
+.button4:hover {
+  background: #60c90a;
+  border-radius: 5px;
+}
+
+.buttonLogout:hover {
+  background: #c23329;
+  border-radius: 5px;
+}
+
+.buttonAccount:hover {
+  background: #4b5396;
+  border-radius: 5px;
+}

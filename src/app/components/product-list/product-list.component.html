@@ -1,7 +1,7 @@
 <div>
 	<div data-test="product" *ngFor="let product of products">
 		<div data-test= "name">{{product.name}}</div>
-		<div data-test= "price">{{product.price}}</div>
+		<div data-test= "price">{{product.price.toFixed(2)}} €</div>
 		<div data-test= "description">{{product.description}}</div>
 		<div ><button class="button" data-test="addButton" (click)="addProductToCart(product)" >Aggiungi</button></div>
 	</div>

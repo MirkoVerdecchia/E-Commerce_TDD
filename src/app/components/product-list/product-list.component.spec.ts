@@ -81,7 +81,7 @@ describe('ProductListComponent', () => {
       );
       expect(
         products[i].querySelector('[data-test="price"]').innerText
-      ).toEqual(mockProduct[i].price.toString());
+      ).toEqual(mockProduct[i].price.toString() + ' €');
       expect(
         products[i].querySelector('[data-test="description"]').innerText
       ).toEqual(mockProduct[i].description);
