@@ -1,11 +1,21 @@
 <div class="orderTitle">
-	<h3>Lista ordini</h3>
+  <h3>Lista ordini</h3>
 </div>
-
-<table class="orderList">
-    <td class="id"></td>
-    <td class="total"></td>
-    <td class="date"></td>
-    <td class="numberP"></td>
-
+<table class="table-fill">
+  <ul id="ss_elem_list" tabindex="0" role="listbox">
+    <tr>
+      <th class="text-left">ID</th>
+      <th class="text-left">Importo</th>
+      <th class="text-left">Data</th>
+      <th class="text-left">Prodotti</th>
+    </tr>
+    <table class="orderList">
+      <div class="orders" *ngFor="let order of correntOrders">
+        <td class="id">{{ order.id }}</td>
+        <td class="total">{{ order.total }}</td>
+        <td class="date">{{ order.date }}</td>
+        <td class="numberP">{{ order.products.length }}</td>
+      </div>
+    </table>
+  </ul>
 </table>
