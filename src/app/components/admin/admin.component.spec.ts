@@ -60,7 +60,6 @@ describe('AdminComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   //beforeEach with the mock obj passed to the mock method
@@ -119,6 +118,7 @@ describe('AdminComponent', () => {
   });
 
   it('should show product to eliminate', () => {
+
     expect(fixture.nativeElement.querySelectorAll('[data-test="product"]').length).toBe(3);
   });
 

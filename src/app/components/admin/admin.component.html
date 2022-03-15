@@ -11,14 +11,16 @@
       <th class="text-left">Elimina</th>
     </tr>
   </thead>
+    <div data-test="product" *ngFor="let product of products">
+      product
+    </div>
 </ul>
-
 <div class="box3">
-    <input type="text" class="name" placeholder="nome" #name>
+    <input type="text" class="nameI" placeholder="nome" #name>
     &nbsp;
-    <input type="text" class="price" placeholder="prezzo" #price>
+    <input type="text" class="priceI" placeholder="prezzo" #price>
     &nbsp;
-    <input type="text" class="description" placeholder="descrizione" #description>
+    <input type="text" class="descriptionI" placeholder="descrizione" #description>
     &nbsp;
     <button class="buttonCreate" (click)="createProduct(name.value, price.value, description.value)">Crea</button>
     </div>
