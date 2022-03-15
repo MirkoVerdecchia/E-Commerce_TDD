@@ -109,6 +109,19 @@ describe('AdminComponent', () => {
     });
   });
 
+  it('should the button to delete a product call deleteProduct()', () => {
+    let spy = spyOn(component, 'deleteProduct');
+
+    let button =
+      fixture.debugElement.nativeElement.querySelector('.buttonDelete');
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(spy).toHaveBeenCalled();
+    });
+
+  });
+
   it('should check the product data work', () => {
     var p1 = 'Sale';
     var c1 = 10.0;
@@ -122,17 +135,26 @@ describe('AdminComponent', () => {
   });
 
   it('should show product to eliminate', () => {
-
-    expect(fixture.nativeElement.querySelectorAll('[data-test="product"]').length).toBe(3);
+    expect(
+      fixture.nativeElement.querySelectorAll('[data-test="product"]').length
+    ).toBe(3);
   });
 
   it('should show product details to eliminate ', () => {
-    const products = fixture.nativeElement.querySelectorAll('[data-test="product"]');
+    const products = fixture.nativeElement.querySelectorAll(
+      '[data-test="product"]'
+    );
 
     for (var i = 0; i < products.length; i++) {
-      expect(products[i].querySelector('.name').innerText).toEqual(mockProduct[i].name);
-      expect(products[i].querySelector('.price').innerText).toEqual(mockProduct[i].price.toString() + ' €');
-      expect(products[i].querySelector('.description').innerText).toEqual(mockProduct[i].description);
+      expect(products[i].querySelector('.name').innerText).toEqual(
+        mockProduct[i].name
+      );
+      expect(products[i].querySelector('.price').innerText).toEqual(
+        mockProduct[i].price.toString() + ' €'
+      );
+      expect(products[i].querySelector('.description').innerText).toEqual(
+        mockProduct[i].description
+      );
     }
   });
 });

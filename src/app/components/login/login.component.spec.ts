@@ -45,13 +45,13 @@ describe('LoginComponent', () => {
   });
 
   it('should the login button call login() method', () => {
-    spyOn(component, 'logIn');
+    let spy = spyOn(component, 'logIn');
 
     let button = fixture.debugElement.nativeElement.querySelector('.buttonLog');
     button.click();
 
     fixture.whenStable().then(() => {
-      expect(component.logIn).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalled();
     });
   });
 });

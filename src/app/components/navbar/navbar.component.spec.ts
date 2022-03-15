@@ -46,14 +46,14 @@ describe('NavbarComponent', () => {
   });
 
   it('should logOut button call logOut()', () => {
-    spyOn(component, 'logOut');
+    let spy = spyOn(component, 'logOut');
 
     let button =
       fixture.debugElement.nativeElement.querySelector('.buttonLogout');
     button.click();
 
     fixture.whenStable().then(() => {
-      expect(component.logOut).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalled();
     });
   });
 
